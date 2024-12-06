@@ -1,0 +1,89 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-6
+spec:
+    metadata: {}
+    req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/book/new
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Length: "125"
+            Content-Type: application/x-www-form-urlencoded
+            Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=577138b8b81619cca04a6eb51af1605a
+            Dnt: "1"
+            Host: localhost:8000
+            Origin: http://localhost:8000
+            Priority: u=0, i
+            Referer: http://localhost:8000/book/new
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: same-origin
+            Sec-Fetch-User: ?1
+            Sec-Gpc: "1"
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: book[title]=my title&book[author]=author foo&book[printLength]=12&book[library]=4&book[_token]=csrf-token
+        timestamp: 2024-12-03T09:59:07.109729239Z
+    resp:
+        status_code: 303
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Tue, 03 Dec 2024 09:59:07 GMT
+            Expires: Tue, 03 Dec 2024 09:59:07 GMT
+            Host: localhost:8000
+            Location: /book
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 04 Dec 2024 09:59:07 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='/book'" />
+
+                    <title>Redirecting to /book</title>
+                </head>
+                <body>
+                    Redirecting to <a href="/book">/book</a>.
+                </body>
+            </html>
+        status_message: See Other
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-03T09:59:09.422137978Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1733219949
+curl: |-
+    curl --request POST \
+      --url http://localhost:8000/book/new \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Dnt: 1' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Origin: http://localhost:8000' \
+      --header 'Connection: keep-alive' \
+      --header 'Referer: http://localhost:8000/book/new' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=577138b8b81619cca04a6eb51af1605a' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Priority: u=0, i' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --data "book[title]=my title&book[author]=author foo&book[printLength]=12&book[library]=4&book[_token]=csrf-token"

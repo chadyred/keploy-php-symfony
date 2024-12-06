@@ -1,0 +1,54 @@
+services:
+  postgres:
+    container_name: postgres-book-sf
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=keploy
+      - POSTGRES_USER=keploy
+      - POSTGRES_PASSWORD=keploy
+    healthcheck:
+      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-keploy}", "-U", "${POSTGRES_USER:-keploy}"]
+      timeout: 5s
+      retries: 5
+      start_period: 6s
+    ports:
+      - '5432:5432'
+
+#  php:
+#    container_name: php-book-sf
+#    build: docker/php
+#    depends_on:
+#      postgres:
+#        condition: service_healthy # keploy seems to not super this kind of thing
+#    depends_on:
+#      - postgres
+#    working_dir: "/workspace"
+#    volumes:
+#      - ./book:/workspace
+
+#  nginx: # keploy don't want to listen to load balancer
+#    image: nginx:alpine3.20-slim@sha256:087f90d16ce1004cf11671e229b62cc36dca1b837870aa357983954a46034d33
+#    volumes:
+#      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+#      - ./book:/workspace
+#    working_dir: /workspace
+#    depends_on:
+#      - php
+#    ports:
+#      - "${NGINX_PORT:-8080}:80"
+#    container_name: nginx-book-sf
+    
+  php-s:
+    container_name: php-s-book-store
+    build: docker/php
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    working_dir: "/workspace"
+    environment:
+      - APP_ENV=${APP_ENV}
+    volumes:
+      - ./book:/workspace
+    command: "php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini"

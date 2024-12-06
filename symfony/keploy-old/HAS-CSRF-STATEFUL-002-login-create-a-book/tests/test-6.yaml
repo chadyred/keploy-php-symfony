@@ -1,0 +1,99 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-6
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/book/new
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=13a0c011102f2970aea6c526df483c24
+            Dnt: "1"
+            Host: localhost:8000
+            Priority: u=0, i
+            Referer: http://localhost:8000/book
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: same-origin
+            Sec-Fetch-User: ?1
+            Sec-Gpc: "1"
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-02T17:11:58.843679196Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon, 02 Dec 2024 17:11:59 GMT
+            Expires: Mon, 02 Dec 2024 17:11:59 GMT
+            Host: localhost:8000
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Tue, 03 Dec 2024 17:11:59 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>New Book</title>
+                    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+                                </head>
+                <body>
+                        <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/book">Book</a></li>
+                        <li>
+                                                <div class="mb-3">
+                                    You are logged in as test@test.com, <a href="/logout">Logout</a>
+                                </div>
+                                        </li>
+                    </ul>
+                    <hr>
+                        <h1>Create new Book</h1>
+
+                <form name="book1" method="post">
+                <div id="book1"><div><label for="book1_title" class="required">Title</label><input type="text" id="book1_title" name="book1[title]" required="required" maxlength="255" /></div><div><label for="book1_author" class="required">Author</label><input type="text" id="book1_author" name="book1[author]" required="required" maxlength="255" /></div><div><label for="book1_printLength" class="required">Page number</label><input type="number" id="book1_printLength" name="book1[printLength]" required="required" /></div><div><label for="book1_library" class="required">Library</label><select id="book1_library" name="book1[library]"><option value="3">The Biggest Library</option><option value="4">The Smallest Library</option></select></div><input type="hidden" id="book1__token" name="book1[_token]" data-controller="csrf-protection" autocomplete="off" value="564b4766e9.qYY9_qfVe-U0Oy2zb8aTzRbPobW2V4pFhotCXIgnsXY.kPxXiMTjSqxzc0_BIoP9uWCO6-fMOvA9wd8SDeJm3AfusVan8ZgeqQAKWg" /></div>
+                <button class="btn">Save</button>
+            </form>
+
+
+                <a href="/book">back to list</a>
+                </body>
+            </html>
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-02T17:12:01.1368417Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1733159521
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/book/new \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=13a0c011102f2970aea6c526df483c24' \
+      --header 'Connection: keep-alive' \
+      --header 'Host: localhost:8000' \
+      --header 'Priority: u=0, i' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Dnt: 1' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Referer: http://localhost:8000/book' \

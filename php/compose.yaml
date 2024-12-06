@@ -1,0 +1,27 @@
+services:
+  postgres:
+    container_name: postgres-book-store
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_DB=keploy-test
+      - POSTGRES_USER=keploy-user
+      - POSTGRES_PASSWORD=keploy
+    ports:
+      - '5432:5432'
+    volumes:
+      # - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./data.sql:/docker-entrypoint-datadb.d/data.sql
+
+#  php:
+#    container_name: php-book-store
+#    build: docker/php
+##    depends_on:
+##      - postgres
+#    ports:
+#      - "8000:8000"
+#    working_dir: "/workspace"
+#    volumes:
+#      - .:/workspace
+#    command: "php -S 0.0.0.0:8000 index.php"

@@ -1,0 +1,77 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: Logout
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/logout
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Host: localhost:8000
+            Priority: u=0, i
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: none
+            Sec-Fetch-User: ?1
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-11-21T07:23:19.293009204Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Thu, 21 Nov 2024 07:23:19 GMT
+            Expires: Thu, 21 Nov 2024 07:23:19 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/
+            Set-Cookie: MOCKSESSID=deleted; expires=Wed, 22 Nov 2023 07:23:18 GMT; Max-Age=0; path=/; httponly; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/'" />
+
+                    <title>Redirecting to http://localhost:8000/</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/">http://localhost:8000/</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-11-21T07:23:21.433674368Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+            header.Set-Cookie: []
+    created: 1732173801
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/logout \
+      --header 'Priority: u=0, i' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Sec-Fetch-Site: none' \
+      --header 'Cookie: Phpstorm-937f9259=05d3bf5d-cbbe-47a4-9375-51e892f952cc; main_deauth_profile_token=f394a4; PHPSESSID=f14f4f04e0d770d19e114105c3377a93; MOCKSESSID=353697392f04ade8897e9ea60b8d7fac' \
+      --header 'Host: localhost:8000' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Fetch-Dest: document' \

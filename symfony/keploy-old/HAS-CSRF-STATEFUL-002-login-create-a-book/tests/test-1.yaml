@@ -1,0 +1,82 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-1
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Dnt: "1"
+            Host: localhost:8000
+            Priority: u=0, i
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: none
+            Sec-Fetch-User: ?1
+            Sec-Gpc: "1"
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-02T17:11:23.033305704Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon, 02 Dec 2024 17:11:23 GMT
+            Host: localhost:8000
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Welcome!</title>
+                    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+                                </head>
+                <body>
+                        <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/book">Book</a></li>
+                        <li>
+                                                    <a href="/login">Login</a>
+                                        </li>
+                    </ul>
+                    <hr>
+                        Welcome into my super website !
+                </body>
+            </html>
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-02T17:11:25.192951543Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1733159485
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/ \
+      --header 'Priority: u=0, i' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Sec-Fetch-Site: none' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Host: localhost:8000' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Connection: keep-alive' \
+      --header 'Dnt: 1' \
+      --header 'Sec-Fetch-User: ?1' \

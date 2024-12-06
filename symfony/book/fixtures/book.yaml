@@ -1,0 +1,6 @@
+App\Entity\Book:
+  main_book:
+    title: 'Hello world'
+    author: 'Alice et Bob'
+    print_length: 12
+    library: '@main_library'

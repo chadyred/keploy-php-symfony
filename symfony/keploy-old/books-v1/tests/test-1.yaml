@@ -1,0 +1,58 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-1
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/books
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Host: localhost:8000
+            Priority: u=0, i
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: cross-site
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-11-25T19:30:16.942746575Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon, 25 Nov 2024 19:30:18 GMT
+            Host: localhost:8000
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: "<!DOCTYPE html>\n<html>\n    <head>\n        <meta charset=\"UTF-8\">\n        <title>Hello BookController!</title>\n        <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">\n                \n    </head>\n    <body>\n        <style>\n    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }\n    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }\n</style>\n\n<div class=\"example-wrapper\">\n    <h1>Hello BookController! ✅</h1>\n\n    This friendly message is coming from:\n    <ul>\n        <li>Your controller at <code>/workspace/src/Controller/BookController.php</code></li>\n        <li>Your template at <code>/workspace/templates/book/index.html.twig</code></li>\n    </ul>\n</div>\n    </body>\n</html>\n"
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-11-25T19:30:20.152601238Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1732563020
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/book \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Cookie: Phpstorm-937f9259=05d3bf5d-cbbe-47a4-9375-51e892f952cc; main_deauth_profile_token=1a7005' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Priority: u=0, i' \
+      --header 'Sec-Fetch-Site: cross-site' \
+      --header 'Host: localhost:8000' \
+      --header 'Connection: keep-alive' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \

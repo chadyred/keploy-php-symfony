@@ -1,0 +1,26 @@
+variables:
+  DOCKER_HOST: 'tcp://docker:2375/'
+  DOCKER_TLS_CERTDIR: '' #
+  PHP_DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/php:8.3.11-fpm-alpine3.20-dev"
+  DOCKER_CLI_IMAGE: docker:27.3.1-cli
+  DOCKER_DIND_IMAGE: docker:27.3.1-dind
+
+---
+stages:
+  - 📏 tests
+
+keploy-test-job: # This job runs in the test stage.
+  image: ${DOCKER_CLI_IMAGE}
+  stage: test
+  before_script:
+    ## Add the dependencies && Install Keploy Binary
+
+    - apt update && apt install -y sudo curl
+    - curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
+    - sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy
+    - sudo mount -t debugfs debugfs /sys/kernel/debug
+  script:
+    - cd symfony/
+    - make ENV=test start && sleep 2 && make init-db && make fixtures
+    - make ENV=test keploy-test
+  
