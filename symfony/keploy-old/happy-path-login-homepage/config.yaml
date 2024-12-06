@@ -1,0 +1,18 @@
+preScript: ""
+postScript: ""
+template:
+    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+    AcceptEncoding: gzip, deflate, br, zstd
+    AcceptLanguage: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+    Connection: keep-alive
+    Host: localhost:8000
+    Priority: u=0, i
+    Referer: http://localhost:8000/login
+    SecFetchDest: document
+    SecFetchMode: navigate
+    SecFetchSite: none
+    SecFetchSite1: same-origin
+    SecFetchUser: ?1
+    UpgradeInsecureRequests: "1"
+    UserAgent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+mockRegistry: null

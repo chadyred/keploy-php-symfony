@@ -1,0 +1,85 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: I submit the login form and I am redirected to the homepage
+spec:
+    metadata: {}
+    req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/login
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Length: "67"
+            Content-Type: application/x-www-form-urlencoded
+            Host: localhost:8000
+            Origin: http://localhost:8000
+            Priority: u=0, i
+            Referer: http://localhost:8000/login
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: same-origin
+            Sec-Fetch-User: ?1
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: _username=test@test.com&_password=testtest&_csrf_token=csrf-token
+        timestamp: 2024-11-21T07:23:11.200878936Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Thu, 21 Nov 2024 07:23:11 GMT
+            Expires: Thu, 21 Nov 2024 07:23:11 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/
+            Set-Cookie: MOCKSESSID=353697392f04ade8897e9ea60b8d7fac; path=/; httponly; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/'" />
+
+                    <title>Redirecting to http://localhost:8000/</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/">http://localhost:8000/</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-11-21T07:23:13.798572631Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+            header.Set-Cookie: []
+    created: 1732173793
+curl: |-
+    curl --request POST \
+      --url http://localhost:8000/login \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Host: localhost:8000' \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Origin: http://localhost:8000' \
+      --header 'Cookie: Phpstorm-937f9259=05d3bf5d-cbbe-47a4-9375-51e892f952cc; main_deauth_profile_token=f394a4; PHPSESSID=f14f4f04e0d770d19e114105c3377a93' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Priority: u=0, i' \
+      --header 'Referer: http://localhost:8000/login' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --data "_username=test@test.com&_password=testtest&_csrf_token=csrf-token"

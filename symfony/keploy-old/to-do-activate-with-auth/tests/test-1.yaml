@@ -1,0 +1,83 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-1
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: Phpstorm-937f9259=05d3bf5d-cbbe-47a4-9375-51e892f952cc; main_deauth_profile_token=f3d1f2; MOCKSESSID=932120a3e872b21f961f16d123d176b1
+            Host: localhost:8000
+            Priority: u=0, i
+            Referer: http://localhost:8000/
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: same-origin
+            Sec-Fetch-User: ?1
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-11-27T14:34:42.478851321Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Wed, 27 Nov 2024 14:34:42 GMT
+            Host: localhost:8000
+            Set-Cookie: MOCKSESSID=deleted; expires=Tue, 28 Nov 2023 14:34:41 GMT; Max-Age=0; path=/; httponly; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Welcome!</title>
+                    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+                                </head>
+                <body>
+                        <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/book">Book</a></li>
+                        <li>
+                                                    <a href="/login">Login</a>
+                                        </li>
+                    </ul>
+                    <hr>
+                        Welcome into my super website !
+                </body>
+            </html>
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-11-27T14:34:44.626792026Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1732718084
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/ \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Host: localhost:8000' \
+      --header 'Referer: http://localhost:8000/' \
+      --header 'Connection: keep-alive' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Cookie: Phpstorm-937f9259=05d3bf5d-cbbe-47a4-9375-51e892f952cc; main_deauth_profile_token=f3d1f2; MOCKSESSID=932120a3e872b21f961f16d123d176b1' \
+      --header 'Priority: u=0, i' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Sec-Fetch-Dest: document' \

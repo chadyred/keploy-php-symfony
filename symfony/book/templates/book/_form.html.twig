@@ -1,0 +1,8 @@
+{{ form_start(form) }}
+    {{ form_row(form.title) }}
+    {{ form_row(form.author) }}
+    {{ form_row(form.printLength) }}
+    {{ form_row(form.library) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+
+{{ form_end(form, {render_rest: true}) }}

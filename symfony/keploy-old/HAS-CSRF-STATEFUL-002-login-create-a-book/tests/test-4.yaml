@@ -1,0 +1,90 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-4
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/
+        header:
+            Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=13a0c011102f2970aea6c526df483c24
+            Dnt: "1"
+            Host: localhost:8000
+            Priority: u=0, i
+            Referer: http://localhost:8000/login
+            Sec-Fetch-Dest: document
+            Sec-Fetch-Mode: navigate
+            Sec-Fetch-Site: same-origin
+            Sec-Fetch-User: ?1
+            Sec-Gpc: "1"
+            Upgrade-Insecure-Requests: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-02T17:11:54.453932687Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon, 02 Dec 2024 17:11:54 GMT
+            Host: localhost:8000
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Tue, 03 Dec 2024 17:11:54 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8">
+                    <title>Welcome!</title>
+                    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+                                </head>
+                <body>
+                        <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/book">Book</a></li>
+                        <li>
+                                                <div class="mb-3">
+                                    You are logged in as test@test.com, <a href="/logout">Logout</a>
+                                </div>
+                                        </li>
+                    </ul>
+                    <hr>
+                        Welcome into my super website !
+                </body>
+            </html>
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-02T17:11:56.615589277Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Set-Cookie: []
+    created: 1733159516
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/ \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=13a0c011102f2970aea6c526df483c24' \
+      --header 'Dnt: 1' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Priority: u=0, i' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Referer: http://localhost:8000/login' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \

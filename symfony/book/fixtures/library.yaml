@@ -1,0 +1,5 @@
+App\Entity\Library:
+  main_library:
+    name: 'The Biggest Library'
+  other_library:
+    name: 'The Smallest Library'

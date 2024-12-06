@@ -1,0 +1,5 @@
+App\Entity\User:
+  main_user:
+    email: "test@test.com"
+    password: '\$2y\$13\$kXdO9GV26RdNHQlF0hjgUuLKDLyXnygspyofrVOwb37IWCquJDlQ2' # testtest
+    roles: ['ROLE_ADMIN', 'ROLE_USER']
