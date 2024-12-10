@@ -1,0 +1,17 @@
+export interface JSONPatchOther {
+    op: 'add' | 'replace' | 'test';
+    path: string;
+    value: any;
+}
+export interface JSONPatchRemove {
+    op: 'remove';
+    path: string;
+}
+export interface JSONPatchCopyMove {
+    op: 'copy' | 'move';
+    path: string;
+    from: string;
+}
+export declare type JSONPatch = (JSONPatchOther | JSONPatchRemove | JSONPatchCopyMove)[];
+export declare function diff(src: any, dst: any, path?: string): JSONPatch;
+export declare function patch(obj: any, patch: JSONPatch): any;

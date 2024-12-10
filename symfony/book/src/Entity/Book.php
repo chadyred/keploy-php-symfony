@@ -7,7 +7,7 @@ use App\Repository\BookRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookRepository::class)]
-#[ApiResource]
+#[ApiResource(description: 'The book resource describe a book with its print length')]
 class Book
 {
     #[ORM\Id]

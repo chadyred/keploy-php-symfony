@@ -1,0 +1,1 @@
+{"version":3,"file":"EditContextProvider.d.ts","sourceRoot":"","sources":["../../../../src/controller/edit/EditContextProvider.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAKlC,OAAO,EAAE,oBAAoB,EAAE,MAAM,qBAAqB,CAAC;AAE3D;;;;;;;;;;;;;;;;;;;;;;GAsBG;AACH,eAAO,MAAM,mBAAmB;cAIlB,SAAS;WACZ,oBAAoB;uBAW9B,CAAC"}

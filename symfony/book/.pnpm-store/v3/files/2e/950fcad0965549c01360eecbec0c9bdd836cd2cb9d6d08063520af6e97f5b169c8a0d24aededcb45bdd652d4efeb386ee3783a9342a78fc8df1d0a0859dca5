@@ -1,0 +1,17 @@
+/// <reference types="react" />
+import type { TitleComponent } from '../types';
+export declare const DefaultTitleContext: import("react").Context<TitleComponent>;
+export declare const DefaultTitleContextProvider: import("react").Provider<TitleComponent>;
+/**
+ * Get the application title defined at the `<Admin>` level
+ *
+ * @example
+ * import { useDefaultTitle } from 'react-admin';
+ *
+ * const AppBar = () => {
+ *    const defaultTitle = useDefaultTitle();
+ *    return <span>{defaultTitle}</span>;
+ * }
+ */
+export declare const useDefaultTitle: () => TitleComponent;
+//# sourceMappingURL=DefaultTitleContext.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"OptionalResourceContextProvider.d.ts","sourceRoot":"","sources":["../../../src/core/OptionalResourceContextProvider.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAE,YAAY,EAAE,MAAM,OAAO,CAAC;AACrC,OAAO,EAAE,oBAAoB,EAAE,MAAM,mBAAmB,CAAC;AAGzD;;;;;;;;;;;;;;GAcG;AACH,eAAO,MAAM,+BAA+B;YAIhC,oBAAoB;cAClB,YAAY;uBAQrB,CAAC"}

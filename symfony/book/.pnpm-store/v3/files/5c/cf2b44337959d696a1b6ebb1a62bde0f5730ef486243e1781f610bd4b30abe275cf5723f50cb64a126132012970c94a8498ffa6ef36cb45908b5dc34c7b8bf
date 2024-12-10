@@ -1,0 +1,70 @@
+import { ParserError, RetrieverError } from './errors.js';
+import * as meta from './meta.js';
+import { resolve as refResolver } from './ref.js';
+export * from './errors.js';
+export { getMeta, isAnnotated, isRef, normalize, normalizeUri } from './meta.js';
+export * from './patch.js';
+export { resolve as pointer } from './pointer.js';
+export * from './rebase.js';
+export function scope(data) {
+    if (meta.isAnnotated(data)) {
+        return meta.getMeta(data).scope;
+    }
+}
+export async function parse(dataOrUri, opts) {
+    let obj;
+    if (!opts || !opts.scope) {
+        throw new Error('No scope');
+    }
+    if (typeof dataOrUri === 'string') {
+        if (!opts.retriever) {
+            throw new Error('No retriever');
+        }
+        const uri = new URL(dataOrUri).toString();
+        obj = await opts.retriever(uri);
+        if (!opts.registry) {
+            opts.registry = {};
+        }
+        if (uri !== opts.scope) {
+            opts.registry[meta.normalizeUri(uri)] = obj;
+        }
+    }
+    else if (dataOrUri === null || typeof dataOrUri !== 'object') {
+        throw new TypeError('Bad data');
+    }
+    else {
+        obj = dataOrUri;
+    }
+    if (meta.isAnnotated(obj)) {
+        return obj;
+    }
+    else {
+        meta.annotate(obj, opts);
+        if (meta.getMeta(obj).refs.size > 0) {
+            const missingRefs = meta.missingRefs(obj);
+            if (missingRefs.length) {
+                if (!opts.retriever) {
+                    throw new Error('No retriever');
+                }
+                const registry = meta.getMeta(obj).registry;
+                const errors = [];
+                for (let r of missingRefs) {
+                    try {
+                        registry[r] = await opts.retriever(r);
+                    }
+                    catch (e) {
+                        errors.push(new RetrieverError(r, e));
+                    }
+                }
+                if (errors.length) {
+                    throw new ParserError(meta.getMeta(obj).scope, 'retriever', errors);
+                }
+            }
+            return refResolver(obj, opts);
+        }
+        else {
+            return obj;
+        }
+    }
+}
+//# sourceMappingURL=index.js.map

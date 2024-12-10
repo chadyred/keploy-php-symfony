@@ -1,0 +1,1 @@
+{"version":3,"file":"FakeBrowser.d.ts","sourceRoot":"","sources":["../../../src/storybook/FakeBrowser.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAK,KAAK,MAAM,OAAO,CAAC;AAC/B,OAAO,EAAE,SAAS,EAAE,MAAM,OAAO,CAAC;AAIlC;;;;;;;;;;;;;GAaG;AACH,eAAO,MAAM,oBAAoB,iDAQhC,CAAC;AAEF,eAAO,MAAM,OAAO;cAA8B,SAAS;uBAc1D,CAAC"}

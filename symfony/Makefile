@@ -12,6 +12,14 @@ PHP := $(DOCKER_COMPOSE) run --rm php-s
 USER_ID := $(shell id -u)
 GROUP_ID := $(shell id -g)
 TEST_REPORT_BASE_PATH := tests/reports
+NO_TTY ?= false
+PNPM := $(DOCKER_COMPOSE_RUN) node pnpm
+
+ifeq ("$(NO_TTY)","false")
+	COMPOSER := $(DOCKER_COMPOSE) run --rm -it php-s composer
+else
+	COMPOSER := $(DOCKER_COMPOSE) run --rm -T php-s composer
+endif
 
 ENV ?= dev
 APP_ENV ?= $(ENV)
@@ -42,30 +50,42 @@ restart: stop start
 stop-bdd:
 	$(DOCKER_COMPOSE) down postgres
 
+# Stop and clean docker container (volume and orphans)
 .PHONY: clean
 clean:
 	$(DOCKER_COMPOSE) down --remove-orphans -v
 
+# Run db migration
 init-db:
 	docker exec -it php-s-book-store sh -c "php bin/console doctrine:migr:migr -n"
 
-assets:
-	$(SUB_MAKE) sc/'asset-map:compile'
+## Compile assets (take care of message from the command)
+assets: node_modules/.modules.yaml
+	$(SUB_MAKE) sc/'asset:install'
+	$(SUB_MAKE) pnpm/'run $(ENV)'
 
+node_modules/.modules.yaml:
+	$(SUB_MAKE) pnpm/'install'
+
+## Create environment docker file, install PHP and node deps
 .PHONY: install
-install: .env-compose vendor/autoloa_runtime.php assets
+install: .env-compose vendor/autoload_runtime.php assets
 
 ## Install vendor (use -B to force command)
-vendor/autoloa_runtime.php:
-	$(DOCKER_COMPOSE) run --rm -it php-s composer install
+vendor/autoload_runtime.php:
+	$(COMPOSER) install
 
 ## Used to update compose dependencies
-.PHONY: composer/.
+.PHONY: composer/%
 composer/%: 
-	$(DOCKER_COMPOSE) run --rm -it php-s composer $*
+	$(COMPOSER) $*
 
 ######
 CLI command:
+
+## Run a pnpm command like `make pnpm/'run dev'`
+pnpm/%: .env-compose
+	$(PNPM) $*
 
 ## Run a command console through symfony CLI like `make sc/'c:c'`
 sc/%: .env-compose
@@ -83,15 +103,23 @@ fixtures:
 
 ## Record keploy
 keploy-record: .env-compose
+	$(SUB_MAKE) ENV=test start
+	sleep 2  
+	$(SUB_MAKE) init-db 
+	$(SUB_MAKE) fixtures
 	keploy record
 
 ## Rerecord keploy with TESTS as `make ENV=test TESTS=books-v1 keploy-rerecord`
 keploy-rerecord: .env-compose
+	$(SUB_MAKE) ENV=test start
+	sleep 2  
+	$(SUB_MAKE) init-db 
+	$(SUB_MAKE) fixtures
 	keploy rerecord -t "$(TESTS)"
 
 ## Load keploy record
 .PHONY: keploy-test
-keploy-test: clean cc .env-compose
+keploy-test: install clean cc .env-compose
 	keploy test
 
 help:

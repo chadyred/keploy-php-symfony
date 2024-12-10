@@ -10,13 +10,15 @@ spec:
         url: http://localhost:8000/
         header:
             Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Encoding: gzip,deflate,br,zstd
             Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
             Connection: keep-alive
             Cookie: MOCKSESSID=6d91feab216f377bfc81f5581251961e
             Dnt: "1"
             Host: localhost:8000
-            Priority: u=0, i
+            Keploy-Test-Id: test-6
+            Keploy-Test-Set-Id: 001-homepage-login-logout
+            Priority: u=0,i
             Referer: http://localhost:8000/
             Sec-Fetch-Dest: document
             Sec-Fetch-Mode: navigate
@@ -26,61 +28,44 @@ spec:
             Upgrade-Insecure-Requests: "1"
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-11-27T19:03:18.40072797Z
+        timestamp: 2024-12-10T11:53:34.195956475Z
     resp:
         status_code: 200
         header:
             Cache-Control: no-cache, private
             Content-Type: text/html; charset=UTF-8
-            Date: Wed, 27 Nov 2024 19:03:18 GMT
+            Date: Tue, 10 Dec 2024 11:53:34 GMT
             Host: localhost:8000
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
-        body: |
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <meta charset="UTF-8">
-                    <title>Welcome!</title>
-                    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-                                </head>
-                <body>
-                        <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/book">Book</a></li>
-                        <li>
-                                                    <a href="/login">Login</a>
-                                        </li>
-                    </ul>
-                    <hr>
-                        Welcome into my super website !
-                </body>
-            </html>
+        body: "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Welcome!</title>\n    <link rel=\"icon\"\n          href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">\n            <link rel=\"stylesheet\" href=\"/build/app.css\">\n    \n\n            <script src=\"/build/runtime.js\" defer></script><script src=\"/build/19.js\" defer></script><script src=\"/build/app.js\" defer></script>\n    </head>\n    <body>\n            <ul>\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/book\">Book</a></li>\n            <li>\n                                    <a href=\"/login\">Login</a>\n                            </li>\n                    </ul>\n        <hr>\n        Welcome into my super website !\n    </body>\n</html>\n"
         status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-11-27T19:03:20.545789897Z
+        timestamp: 2024-12-10T11:53:36.361341941Z
     objects: []
     assertions:
         noise:
             header.Date: []
-    created: 1732734200
+    created: 1733831616
 curl: |
     curl --request GET \
       --url http://localhost:8000/ \
-      --header 'Upgrade-Insecure-Requests: 1' \
-      --header 'Dnt: 1' \
-      --header 'Cookie: MOCKSESSID=6d91feab216f377bfc81f5581251961e' \
-      --header 'Sec-Fetch-Dest: document' \
       --header 'Host: localhost:8000' \
+      --header 'Priority: u=0,i' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
       --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Priority: u=0, i' \
-      --header 'Sec-Fetch-Site: same-origin' \
       --header 'Referer: http://localhost:8000/' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Cookie: MOCKSESSID=6d91feab216f377bfc81f5581251961e' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Sec-Fetch-Mode: navigate' \
       --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
       --header 'Sec-Gpc: 1' \
-      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
-      --header 'Sec-Fetch-Mode: navigate' \
-      --header 'Sec-Fetch-User: ?1' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Keploy-Test-Id: test-6' \
+      --header 'Sec-Fetch-Dest: document' \
       --header 'Connection: keep-alive' \
+      --header 'Dnt: 1' \
+      --header 'Keploy-Test-Set-Id: 001-homepage-login-logout' \

@@ -1,0 +1,1 @@
+{"version":3,"file":"useUpdateCache.d.ts","sourceRoot":"","sources":["../../src/dataProvider/useUpdateCache.ts"],"names":[],"mappings":"AACA,OAAO,KAAK,EAAiB,UAAU,EAAE,MAAM,aAAa,CAAC;AAE7D,OAAO,KAAK,EAAE,sBAAsB,EAAE,MAAM,aAAa,CAAC;AAE1D,QAAA,MAAM,cAAc,kCASb;IACD,QAAQ,EAAE,MAAM,CAAC;IACjB,EAAE,EAAE,UAAU,CAAC;IACf,IAAI,EAAE,sBAAsB,CAAC;CAC9B,SA6CJ,CAAC;AAEF,eAAe,cAAc,CAAC"}

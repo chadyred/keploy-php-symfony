@@ -10,15 +10,17 @@ spec:
         url: http://localhost:8000/login
         header:
             Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Encoding: gzip,deflate,br,zstd
             Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
             Connection: keep-alive
-            Content-Length: "67"
+            Content-Length: "65"
             Content-Type: application/x-www-form-urlencoded
             Dnt: "1"
             Host: localhost:8000
+            Keploy-Test-Id: test-3
+            Keploy-Test-Set-Id: 001-homepage-login-logout
             Origin: http://localhost:8000
-            Priority: u=0, i
+            Priority: u=0,i
             Referer: http://localhost:8000/login
             Sec-Fetch-Dest: document
             Sec-Fetch-Mode: navigate
@@ -28,17 +30,17 @@ spec:
             Upgrade-Insecure-Requests: "1"
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: _username=test@test.com&_password=testtest&_csrf_token=csrf-token
-        timestamp: 2024-11-27T19:03:07.698916442Z
+        timestamp: 2024-12-10T11:53:33.498547445Z
     resp:
         status_code: 302
         header:
             Cache-Control: max-age=0, must-revalidate, private
             Content-Type: text/html; charset=utf-8
-            Date: Wed, 27 Nov 2024 19:03:08 GMT
-            Expires: Wed, 27 Nov 2024 19:03:08 GMT
+            Date: Tue, 10 Dec 2024 11:53:33 GMT
+            Expires: Tue, 10 Dec 2024 11:53:33 GMT
             Host: localhost:8000
             Location: http://localhost:8000/
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Thu, 28 Nov 2024 19:03:08 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax,MOCKSESSID=6d91feab216f377bfc81f5581251961e; path=/; httponly; samesite=lax
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:53:33 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax,MOCKSESSID=824393cb0f90432e8633c6d5f6d29ad4; path=/; httponly; samesite=lax
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
         body: |-
@@ -57,31 +59,33 @@ spec:
         status_message: Found
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-11-27T19:03:10.292633976Z
+        timestamp: 2024-12-10T11:53:35.959368481Z
     objects: []
     assertions:
         noise:
             header.Date: []
             header.Expires: []
-    created: 1732734190
+    created: 1733831615
 curl: |-
     curl --request POST \
       --url http://localhost:8000/login \
       --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
       --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Sec-Fetch-Mode: navigate' \
-      --header 'Referer: http://localhost:8000/login' \
-      --header 'Sec-Fetch-User: ?1' \
-      --header 'Sec-Gpc: 1' \
-      --header 'Origin: http://localhost:8000' \
-      --header 'Content-Type: application/x-www-form-urlencoded' \
-      --header 'Sec-Fetch-Site: same-origin' \
-      --header 'Upgrade-Insecure-Requests: 1' \
-      --header 'Dnt: 1' \
-      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Sec-Fetch-Dest: document' \
       --header 'Connection: keep-alive' \
       --header 'Host: localhost:8000' \
-      --header 'Priority: u=0, i' \
+      --header 'Dnt: 1' \
+      --header 'Origin: http://localhost:8000' \
+      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Priority: u=0,i' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Keploy-Test-Set-Id: 001-homepage-login-logout' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Keploy-Test-Id: test-3' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Content-Type: application/x-www-form-urlencoded' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Referer: http://localhost:8000/login' \
       --data "_username=test@test.com&_password=testtest&_csrf_token=csrf-token"

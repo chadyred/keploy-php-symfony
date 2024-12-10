@@ -1,0 +1,72 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-2
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/api/libraries?order%5Bid%5D=DESC&page=1&itemsPerPage=25
+        url_params:
+            itemsPerPage: "25"
+            order[id]: DESC
+            page: "1"
+        header:
+            Accept: application/ld+json
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Type: application/ld+json
+            Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/admin
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-10T10:57:41.022131334Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Location: /api/libraries.jsonld?order%5Bid%5D=DESC&page=1&itemsPerPage=25
+            Content-Type: application/ld+json; charset=utf-8
+            Date: Tue, 10 Dec 2024 10:57:41 GMT
+            Etag: '"0e6fce146edd586c"'
+            Host: localhost:8000
+            Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 10:57:41 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Vary: Accept,Content-Type,Authorization,Origin
+            X-Content-Type-Options: nosniff
+            X-Frame-Options: deny
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: '{"@context":"\/api\/contexts\/Library","@id":"\/api\/libraries","@type":"Collection","totalItems":2,"member":[{"@id":"\/api\/libraries\/5","@type":"Library","id":5,"books":["\/api\/books\/3"],"name":"The Biggest Library"},{"@id":"\/api\/libraries\/6","@type":"Library","id":6,"books":[],"name":"The Smallest Library"}],"view":{"@id":"\/api\/libraries?itemsPerPage=25\u0026order%5Bid%5D=DESC","@type":"PartialCollectionView"}}'
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-10T10:57:43.261744894Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1733828263
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/api/libraries?order%5Bid%5D=DESC&page=1&itemsPerPage=25 \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Host: localhost:8000' \
+      --header 'Content-Type: application/ld+json' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Accept: application/ld+json' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Priority: u=4' \

@@ -1,0 +1,69 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-20
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/api/books/3
+        header:
+            Accept: application/ld+json
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Type: application/ld+json
+            Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/admin
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-10T10:58:05.056627595Z
+    resp:
+        status_code: 200
+        header:
+            Accept-Patch: application/merge-patch+json
+            Cache-Control: no-cache, private
+            Content-Location: /api/books/3.jsonld
+            Content-Type: application/ld+json; charset=utf-8
+            Date: Tue, 10 Dec 2024 10:58:05 GMT
+            Etag: '"740a79ad159f85c6"'
+            Host: localhost:8000
+            Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 10:58:05 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Vary: Accept,Content-Type,Authorization,Origin
+            X-Content-Type-Options: nosniff
+            X-Frame-Options: deny
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: '{"@context":"\/api\/contexts\/Book","@id":"\/api\/books\/3","@type":"Book","id":3,"title":"Hello world","author":"Alice et Bob","printLength":12,"library":"\/api\/libraries\/5"}'
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-10T10:58:07.286540239Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1733828287
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/api/books/3 \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Accept: application/ld+json' \
+      --header 'Connection: keep-alive' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Content-Type: application/ld+json' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
+      --header 'Priority: u=4' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Referer: http://localhost:8000/admin' \
