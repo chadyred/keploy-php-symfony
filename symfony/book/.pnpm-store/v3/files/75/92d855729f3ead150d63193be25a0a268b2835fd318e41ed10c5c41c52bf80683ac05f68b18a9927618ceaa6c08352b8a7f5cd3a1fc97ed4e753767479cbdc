@@ -1,0 +1,3 @@
+import { DataProvider } from '../types';
+export declare const defaultDataProvider: DataProvider;
+//# sourceMappingURL=defaultDataProvider.d.ts.map

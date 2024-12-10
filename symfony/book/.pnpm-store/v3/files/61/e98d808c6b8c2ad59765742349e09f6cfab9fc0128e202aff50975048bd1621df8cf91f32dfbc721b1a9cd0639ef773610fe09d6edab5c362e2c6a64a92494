@@ -1,0 +1,62 @@
+import type { UseQueryOptions } from '@tanstack/react-query';
+import type { FilterPayload, RaRecord, SortPayload } from '../../types';
+import type { ChoicesContextValue } from '../../form';
+/**
+ * A hook for choosing a reference record. Useful for foreign keys.
+ *
+ * This hook fetches the possible values in the reference resource
+ * (using `dataProvider.getList()`), it returns the possible choices
+ * as the `choices` attribute.
+ *
+ * @example
+ * const {
+ *      choices, // the available reference resource
+ * } = useReferenceInputController({
+ *      input, // the input props
+ *      resource: 'comments',
+ *      reference: 'posts',
+ *      source: 'post_id',
+ * });
+ *
+ * The hook also allow to filter results. It returns a `setFilters`
+ * function. It uses the value to create a filter for the query.
+ * You can also add a permanentFilter to further filter the result:
+ *
+ * @example
+ * const {
+ *      choices, // the available reference resource
+ *      setFilter,
+ * } = useReferenceInputController({
+ *      input, // the input props
+ *      resource: 'comments',
+ *      reference: 'posts',
+ *      source: 'post_id',
+ *      permanentFilter: {
+ *          author: 'john'
+ *      },
+ * });
+ */
+export declare const useReferenceInputController: <RecordType extends RaRecord<import("../../types").Identifier> = any>(props: UseReferenceInputControllerParams) => ChoicesContextValue<RecordType>;
+export interface UseReferenceInputControllerParams<RecordType extends RaRecord = any> {
+    debounce?: number;
+    filter?: FilterPayload;
+    queryOptions?: Omit<UseQueryOptions<{
+        data: RecordType[];
+        total?: number;
+        pageInfo?: {
+            hasNextPage?: boolean;
+            hasPreviousPage?: boolean;
+        };
+    }>, 'queryFn' | 'queryKey'> & {
+        meta?: any;
+    };
+    page?: number;
+    perPage?: number;
+    record?: RaRecord;
+    reference: string;
+    resource?: string;
+    sort?: SortPayload;
+    source: string;
+    enableGetChoices?: (filters: any) => boolean;
+}
+//# sourceMappingURL=useReferenceInputController.d.ts.map

@@ -1,0 +1,1 @@
+{"version":3,"file":"fetchResource.d.ts","sourceRoot":"","sources":["../../src/hydra/fetchResource.ts"],"names":[],"mappings":"AAGA,OAAO,KAAK,EAAE,kBAAkB,EAAE,mBAAmB,EAAE,MAAM,YAAY,CAAC;sCAG3D,MAAM,YACV,mBAAmB,KAC3B,QAAQ;IAAE,UAAU,EAAE,kBAAkB,EAAE,CAAA;CAAE,CAAC;AAHhD,wBAmBE"}

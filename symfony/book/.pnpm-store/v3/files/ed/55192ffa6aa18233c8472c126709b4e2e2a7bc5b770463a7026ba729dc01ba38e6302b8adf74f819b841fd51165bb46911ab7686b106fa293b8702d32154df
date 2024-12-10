@@ -1,0 +1,39 @@
+import * as React from 'react';
+import { TextFieldProps } from '@mui/material/TextField';
+import { CommonInputProps } from './CommonInputProps';
+/**
+ * Form input to edit a Date string value in the "YYYY-MM-DD" format (e.g. '2021-06-23').
+ *
+ * Renders a date picker (the exact UI depends on the browser).
+ *
+ * @example
+ * import { Edit, SimpleForm, DateInput } from 'react-admin';
+ *
+ * const PostEdit = () => (
+ *     <Edit>
+ *         <SimpleForm>
+ *             <DateInput source="published_at" />
+ *         </SimpleForm>
+ *     </Edit>
+ * );
+ *
+ * @example
+ * // If the initial value string contains more than a date (e.g. an hour, a timezone),
+ * // these details are ignored.
+ * <DateInput source="published_at" defaultValue="2021-09-11T20:46:20.000-04:00" />
+ * // The input will display '2021-09-11' whatever the browser timezone.
+ *
+ * @example
+ * // If the initial value is a Date object, DateInput converts it to a string
+ * // and ignores the timezone.
+ * <DateInput source="published_at" defaultValue={new Date("2021-09-11T20:46:20.000-04:00")} />
+ * // The input will display '2021-09-11' whatever the browser timezone.
+ *
+ * @example
+ * // If you want the returned value to be a Date, you must pass a custom parse method
+ * to convert the form value (which is always a date string) back to a Date object.
+ * <DateInput source="published_at" parse={val => new Date(val)} />
+ */
+export declare const DateInput: ({ className, defaultValue, format, label, source, resource, helperText, margin, onChange, onFocus, validate, variant, disabled, readOnly, ...rest }: DateInputProps) => React.JSX.Element;
+export type DateInputProps = CommonInputProps & Omit<TextFieldProps, 'helperText' | 'label'>;
+//# sourceMappingURL=DateInput.d.ts.map

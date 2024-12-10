@@ -1,0 +1,48 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ToggleThemeButton = void 0;
+var react_1 = __importDefault(require("react"));
+var material_1 = require("@mui/material");
+var Brightness4_1 = __importDefault(require("@mui/icons-material/Brightness4"));
+var Brightness7_1 = __importDefault(require("@mui/icons-material/Brightness7"));
+var ra_core_1 = require("ra-core");
+var theme_1 = require("../theme");
+/**
+ * Button toggling the theme (light or dark).
+ *
+ * Enabled by default in the <AppBar> when the <Admin> component has a darkMode.
+ *
+ * @example
+ * import { AppBar, ToggleThemeButton } from 'react-admin';
+ *
+ * const MyAppBar = () => (
+ *     <AppBar toolbar={<ToggleThemeButton />} />
+ * );
+ *
+ * const MyLayout = ({ children }) => (
+ *     <Layout appBar={MyAppBar}>
+ *         {children}
+ *     </Layout>
+ * );
+ */
+var ToggleThemeButton = function () {
+    var translate = (0, ra_core_1.useTranslate)();
+    var _a = (0, theme_1.useThemesContext)(), darkTheme = _a.darkTheme, defaultTheme = _a.defaultTheme;
+    var prefersDarkMode = (0, material_1.useMediaQuery)('(prefers-color-scheme: dark)', {
+        noSsr: true,
+    });
+    var _b = (0, theme_1.useTheme)(defaultTheme || (prefersDarkMode && darkTheme ? 'dark' : 'light')), theme = _b[0], setTheme = _b[1];
+    var handleTogglePaletteType = function () {
+        setTheme(theme === 'dark' ? 'light' : 'dark');
+    };
+    var toggleThemeTitle = translate('ra.action.toggle_theme', {
+        _: 'Toggle Theme',
+    });
+    return (react_1.default.createElement(material_1.Tooltip, { title: toggleThemeTitle, enterDelay: 300 },
+        react_1.default.createElement(material_1.IconButton, { color: "inherit", onClick: handleTogglePaletteType, "aria-label": toggleThemeTitle }, theme === 'dark' ? react_1.default.createElement(Brightness7_1.default, null) : react_1.default.createElement(Brightness4_1.default, null))));
+};
+exports.ToggleThemeButton = ToggleThemeButton;
+//# sourceMappingURL=ToggleThemeButton.js.map

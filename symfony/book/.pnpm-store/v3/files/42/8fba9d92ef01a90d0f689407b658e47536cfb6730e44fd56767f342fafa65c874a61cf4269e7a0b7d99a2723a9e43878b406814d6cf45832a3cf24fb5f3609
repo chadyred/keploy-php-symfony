@@ -1,0 +1,59 @@
+/// <reference types="react" />
+import { InputProps } from '../useInput';
+/**
+ * A hook that returns a validation function checking for a record field uniqueness
+ * by calling the dataProvider getList function with a filter.
+ *
+ * @example // Passing options at declaration time
+ * const UserCreateForm = () => {
+ *     const unique = useUnique({ message: 'Username is already used'});
+ *     return (
+ *         <SimpleForm>
+ *             <TextInput source="username" validate={unique()} />
+ *         </SimpleForm>
+ *     );
+ * }
+ *
+ * @example // Passing options at call time
+ * const UserCreateForm = () => {
+ *     const unique = useUnique();
+ *     return (
+ *         <SimpleForm>
+ *             <TextInput source="username" validate={unique({ message: 'Username is already used'})} />
+ *         </SimpleForm>
+ *     );
+ * }
+ *
+ * @example // With additional filters
+ * const UserCreateForm = () => {
+ *     const unique = useUnique();
+ *     return (
+ *         <SimpleForm>
+ *             <ReferenceInput source="organization_id" reference="organizations" />
+ *             <FormDataConsumer>
+ *                 {({ formData }) => (
+ *                     <TextInput
+ *                         source="username"
+ *                         validate={unique({ filter: { organization_id: formData.organization_id })}
+ *                     />
+ *                 )}
+ *             </FormDataConsumer>
+ *         </SimpleForm>
+ *     );
+ * }
+ */
+export declare const useUnique: (options?: UseUniqueOptions) => (callTimeOptions?: UseUniqueOptions) => (value: any, allValues: any, props: InputProps) => Promise<string | {
+    message: any;
+    args: {
+        source: string;
+        value: any;
+        field: string | import("react").ReactElement<any, string | import("react").JSXElementConstructor<any>> | null;
+    };
+} | undefined>;
+export type UseUniqueOptions = {
+    debounce?: number;
+    resource?: string;
+    message?: string;
+    filter?: Record<string, any>;
+};
+//# sourceMappingURL=useUnique.d.ts.map

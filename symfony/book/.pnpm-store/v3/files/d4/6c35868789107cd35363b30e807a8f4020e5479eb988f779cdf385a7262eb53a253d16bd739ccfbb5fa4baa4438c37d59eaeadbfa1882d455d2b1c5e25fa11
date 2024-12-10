@@ -1,0 +1,43 @@
+declare type Line = number;
+declare type Column = number;
+declare type Kind = number;
+declare type Name = number;
+declare type Var = number;
+declare type SourcesIndex = number;
+declare type ScopesIndex = number;
+export declare type OriginalScope = {
+    0: Line;
+    1: Column;
+    2: Line;
+    3: Column;
+    4: Kind;
+    vars?: Var[];
+    length: 5;
+} | {
+    0: Line;
+    1: Column;
+    2: Line;
+    3: Column;
+    4: Kind;
+    5: Name;
+    vars?: Var[];
+    length: 6;
+};
+export declare function decodeOriginalScopes(input: string): OriginalScope[];
+export declare function encodeOriginalScopes(scopes: OriginalScope[]): string;
+export declare type GeneratedRange = {
+    0: Line;
+    1: Column;
+    2: Line;
+    3: Column;
+    4: SourcesIndex;
+    5: ScopesIndex;
+    callsite?: CallSite;
+    bindings?: ExpressionBinding[][];
+    isScope?: boolean;
+};
+export declare type CallSite = [SourcesIndex, Line, Column];
+export declare type ExpressionBinding = [Name] | [Name, Line, Column];
+export declare function decodeGeneratedRanges(input: string): GeneratedRange[];
+export declare function encodeGeneratedRanges(ranges: GeneratedRange[]): string;
+export {};

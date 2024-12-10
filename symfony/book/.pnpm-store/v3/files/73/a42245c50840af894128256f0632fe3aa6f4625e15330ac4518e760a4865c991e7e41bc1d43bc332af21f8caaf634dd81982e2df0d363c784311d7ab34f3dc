@@ -1,0 +1,40 @@
+import * as React from 'react';
+import { ReactElement, ReactNode } from 'react';
+import { RaRecord } from 'ra-core';
+import { ArrayInputContextValue } from './ArrayInputContext';
+export declare const SimpleFormIteratorItem: React.ForwardRefExoticComponent<Partial<ArrayInputContextValue> & {
+    children?: ReactNode;
+    disabled?: boolean | undefined;
+    disableRemove?: boolean | DisableRemoveFunction | undefined;
+    disableReordering?: boolean | undefined;
+    getItemLabel?: boolean | GetItemLabelFunc | undefined;
+    index: number;
+    inline?: boolean | undefined;
+    onRemoveField: (index: number) => void;
+    onReorder: (origin: number, destination: number) => void;
+    record: RaRecord;
+    removeButton?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
+    reOrderButtons?: React.ReactElement<any, string | React.JSXElementConstructor<any>> | undefined;
+    resource?: string | undefined;
+    source?: string | undefined;
+} & React.RefAttributes<unknown>>;
+export type DisableRemoveFunction = (record: RaRecord) => boolean;
+type GetItemLabelFunc = (index: number) => string | ReactElement;
+export type SimpleFormIteratorItemProps = Partial<ArrayInputContextValue> & {
+    children?: ReactNode;
+    disabled?: boolean;
+    disableRemove?: boolean | DisableRemoveFunction;
+    disableReordering?: boolean;
+    getItemLabel?: boolean | GetItemLabelFunc;
+    index: number;
+    inline?: boolean;
+    onRemoveField: (index: number) => void;
+    onReorder: (origin: number, destination: number) => void;
+    record: RaRecord;
+    removeButton?: ReactElement;
+    reOrderButtons?: ReactElement;
+    resource?: string;
+    source?: string;
+};
+export {};
+//# sourceMappingURL=SimpleFormIteratorItem.d.ts.map

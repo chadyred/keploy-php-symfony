@@ -1,26 +1,37 @@
 variables:
-  DOCKER_HOST: 'tcp://docker:2375/'
+#  DOCKER_HOST: 'tcp://docker:2375/' # NOT WORK AS KEPLOY DON'T' CARE AND USE /var/docker/docker/sock...but not locally :\
   DOCKER_TLS_CERTDIR: '' #
-  PHP_DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/php:8.3.11-fpm-alpine3.20-dev"
+  PHP_DOCKER_IMAGE: "$CI_REGISTRY_IMAGE/php-s:1.0.0"
   DOCKER_CLI_IMAGE: docker:27.3.1-cli
   DOCKER_DIND_IMAGE: docker:27.3.1-dind
+  DOCKER_DRIVER: overlay2
 
----
 stages:
   - 📏 tests
 
 keploy-test-job: # This job runs in the test stage.
-  image: ${DOCKER_CLI_IMAGE}
-  stage: test
+#  image: ${DOCKER_CLI_IMAGE}
+  image: hub.skull.ovh/core-docker/builder:alpine-3.8-docker-26 # CLI
+  stage: 📏 tests
+  cache:
+    key:
+      files:
+        - composer.lock
+    paths:
+      - vendor
+      - public
+      - node_modules
+#  services:
+#    - ${DOCKER_DIND_IMAGE}
   before_script:
-    ## Add the dependencies && Install Keploy Binary
-
-    - apt update && apt install -y sudo curl
-    - curl --silent --location "https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
+    - apk add --update --no-cache sudo curl make
+    - curl --silent --location "https://github.com/keploy/keploy/releases/download/v2.3.0-beta38/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
     - sudo mkdir -p /usr/local/bin && sudo mv /tmp/keploy /usr/local/bin/keploy
     - sudo mount -t debugfs debugfs /sys/kernel/debug
   script:
     - cd symfony/
-    - make ENV=test start && sleep 2 && make init-db && make fixtures
-    - make ENV=test keploy-test
-  
+    - docker ps -q --filter "name=keploy-v2" | grep -q . && docker stop keploy-v2 && docker rm -fv keploy-v2
+#    - /bin/sh -c "export DOCKER_HOST=tcp://docker:2375 && docker container run --name keploy-v2 -e INSTALLATION_ID='' -e BINARY_TO_DOCKER=true -p 16789:16789 --privileged --pid=host  -v /builds/florian.cellier7/keploy-php/symfony:/builds/florian.cellier7/keploy-php/symfony -w /builds/florian.cellier7/keploy-php/symfony -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/bpf:/sys/fs/bpf -v /root/.keploy-config:/root/.keploy-config -v /root/.keploy:/root/.keploy --rm ghcr.io/keploy/keploy:v2.3.0-beta38 test --debug"
+    - make ENV=test NO_TTY=true keploy-test
+  tags:
+    - dockerbuilder # DIND with /var/lig/docker.sock shared

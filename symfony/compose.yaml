@@ -1,7 +1,7 @@
 services:
   postgres:
     container_name: postgres-book-sf
-    image: postgres:16-alpine
+    image: postgres:16.4-alpine@sha256:d898b0b78a2627cb4ee63464a14efc9d296884f1b28c841b0ab7d7c42f1fffdf
     restart: always
     environment:
       - POSTGRES_DB=keploy
@@ -42,13 +42,26 @@ services:
   php-s:
     container_name: php-s-book-store
     build: docker/php
+    image: hub.skull.ovh/chadyred/keploy-php/php-s:1.0.0 # to have /var/docker/docker.sock shared...DOCKER_HOST seems to be not taken in CI :\
     depends_on:
       - postgres
     ports:
       - "8000:8000"
     working_dir: "/workspace"
     environment:
-      - APP_ENV=${APP_ENV}
+      - APP_ENV=${APP_ENV:-test}
     volumes:
       - ./book:/workspace
-    command: "php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini"
+#    command: "symfony server:start --listen-ip=0.0.0.0" # unable to fetch the response from the backend: unexpected EOF...keploy proxy is bad ??
+#    command: "php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # No assets...
+    command: "symfony php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # no error, got assets
+
+  node:
+    user: "${UID}:${GID}"
+    build: ./docker/node
+    image: "registry.gitlab.com/sensiolabs/tech-team/jobs-onboarding/jobs-kark/node:alpine3.20"
+    volumes:
+      - ./book:/workspace
+    working_dir: /workspace
+    profiles:
+      - "frontend"

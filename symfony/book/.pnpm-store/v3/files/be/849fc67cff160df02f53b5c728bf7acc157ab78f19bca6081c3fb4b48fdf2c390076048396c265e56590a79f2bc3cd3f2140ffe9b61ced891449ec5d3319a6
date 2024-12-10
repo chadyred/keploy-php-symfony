@@ -1,0 +1,52 @@
+{
+    "name": "react-admin",
+    "version": "5.4.2",
+    "description": "A frontend Framework for building admin applications on top of REST services, using ES6, React and Material UI",
+    "files": [
+        "*.md",
+        "dist",
+        "src",
+        "docs"
+    ],
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/cjs/index.d.ts",
+    "sideEffects": false,
+    "authors": [
+        "François Zaninotto"
+    ],
+    "repository": "marmelab/react-admin",
+    "homepage": "https://github.com/marmelab/react-admin#readme",
+    "bugs": "https://github.com/marmelab/react-admin/issues",
+    "license": "MIT",
+    "scripts": {
+        "build": "yarn run build-cjs && yarn run build-esm",
+        "build-cjs": "rimraf ./dist/cjs && tsc --outDir dist/cjs",
+        "build-esm": "rimraf ./dist/esm && tsc --outDir dist/esm --module es2015",
+        "watch": "tsc --outDir dist/esm --module es2015 --watch"
+    },
+    "devDependencies": {
+        "cross-env": "^5.2.0",
+        "expect": "^27.4.6",
+        "rimraf": "^3.0.2",
+        "typescript": "^5.1.3"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    },
+    "dependencies": {
+        "@emotion/react": "^11.4.1",
+        "@emotion/styled": "^11.3.0",
+        "@mui/icons-material": "^5.15.20",
+        "@mui/material": "^5.15.20",
+        "ra-core": "^5.4.2",
+        "ra-i18n-polyglot": "^5.4.2",
+        "ra-language-english": "^5.4.2",
+        "ra-ui-materialui": "^5.4.2",
+        "react-hook-form": "^7.53.0",
+        "react-router": "^6.22.0",
+        "react-router-dom": "^6.22.0"
+    },
+    "gitHead": "13749ec2e120a017e3a1760a134d1394c1468e31"
+}

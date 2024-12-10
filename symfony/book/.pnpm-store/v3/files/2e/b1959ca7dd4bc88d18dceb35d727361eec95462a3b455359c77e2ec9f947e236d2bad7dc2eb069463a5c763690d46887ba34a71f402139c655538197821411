@@ -1,0 +1,1 @@
+{"version":3,"file":"HttpError.d.ts","sourceRoot":"","sources":["../../../src/dataProvider/HttpError.ts"],"names":[],"mappings":"AAAA,cAAM,SAAU,SAAQ,KAAK;aAEL,OAAO;aACP,MAAM;aACN,IAAI,EAAE,GAAG;gBAFT,OAAO,KAAA,EACP,MAAM,KAAA,EACN,IAAI,GAAE,GAAU;CAYvC;AAED,eAAe,SAAS,CAAC"}

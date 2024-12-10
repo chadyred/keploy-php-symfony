@@ -10,13 +10,15 @@ spec:
         url: http://localhost:8000/logout
         header:
             Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Encoding: gzip,deflate,br,zstd
             Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
             Connection: keep-alive
             Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=6d91feab216f377bfc81f5581251961e
             Dnt: "1"
             Host: localhost:8000
-            Priority: u=0, i
+            Keploy-Test-Id: test-5
+            Keploy-Test-Set-Id: 001-homepage-login-logout
+            Priority: u=0,i
             Referer: http://localhost:8000/
             Sec-Fetch-Dest: document
             Sec-Fetch-Mode: navigate
@@ -26,17 +28,17 @@ spec:
             Upgrade-Insecure-Requests: "1"
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-11-27T19:03:18.262376064Z
+        timestamp: 2024-12-10T11:53:34.078303379Z
     resp:
         status_code: 302
         header:
             Cache-Control: max-age=0, must-revalidate, private
             Content-Type: text/html; charset=utf-8
-            Date: Wed, 27 Nov 2024 19:03:18 GMT
-            Expires: Wed, 27 Nov 2024 19:03:18 GMT
+            Date: Tue, 10 Dec 2024 11:53:34 GMT
+            Expires: Tue, 10 Dec 2024 11:53:34 GMT
             Host: localhost:8000
             Location: http://localhost:8000/
-            Set-Cookie: X-Auth-Keploy=deleted; expires=Tue, 28 Nov 2023 19:03:17 GMT; Max-Age=0; path=/; httponly
+            Set-Cookie: X-Auth-Keploy=deleted; expires=Mon, 11 Dec 2023 11:53:33 GMT; Max-Age=0; path=/; httponly,MOCKSESSID=deleted; expires=Mon, 11 Dec 2023 11:53:33 GMT; Max-Age=0; path=/; httponly; samesite=lax
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
         body: |-
@@ -55,29 +57,31 @@ spec:
         status_message: Found
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-11-27T19:03:20.444896792Z
+        timestamp: 2024-12-10T11:53:36.261128914Z
     objects: []
     assertions:
         noise:
             header.Date: []
             header.Expires: []
-    created: 1732734200
+    created: 1733831616
 curl: |
     curl --request GET \
       --url http://localhost:8000/logout \
+      --header 'Host: localhost:8000' \
+      --header 'Keploy-Test-Set-Id: 001-homepage-login-logout' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
       --header 'Sec-Fetch-Mode: navigate' \
       --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Keploy-Test-Id: test-5' \
+      --header 'Referer: http://localhost:8000/' \
+      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
       --header 'Sec-Fetch-Dest: document' \
-      --header 'Dnt: 1' \
+      --header 'Sec-Fetch-User: ?1' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=6d91feab216f377bfc81f5581251961e' \
+      --header 'Priority: u=0,i' \
+      --header 'Upgrade-Insecure-Requests: 1' \
       --header 'Connection: keep-alive' \
       --header 'Sec-Gpc: 1' \
-      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=6d91feab216f377bfc81f5581251961e' \
-      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
-      --header 'Upgrade-Insecure-Requests: 1' \
-      --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-      --header 'Referer: http://localhost:8000/' \
-      --header 'Priority: u=0, i' \
-      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Sec-Fetch-User: ?1' \
-      --header 'Host: localhost:8000' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Dnt: 1' \

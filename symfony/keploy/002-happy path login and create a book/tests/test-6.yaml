@@ -10,16 +10,18 @@ spec:
         url: http://localhost:8000/book/new
         header:
             Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
-            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Encoding: gzip,deflate,br,zstd
             Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
             Connection: keep-alive
-            Content-Length: "125"
+            Content-Length: "105"
             Content-Type: application/x-www-form-urlencoded
             Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=577138b8b81619cca04a6eb51af1605a
             Dnt: "1"
             Host: localhost:8000
+            Keploy-Test-Id: test-6
+            Keploy-Test-Set-Id: 002-happy path login and create a book
             Origin: http://localhost:8000
-            Priority: u=0, i
+            Priority: u=0,i
             Referer: http://localhost:8000/book/new
             Sec-Fetch-Dest: document
             Sec-Fetch-Mode: navigate
@@ -29,61 +31,50 @@ spec:
             Upgrade-Insecure-Requests: "1"
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: book[title]=my title&book[author]=author foo&book[printLength]=12&book[library]=4&book[_token]=csrf-token
-        timestamp: 2024-12-03T09:59:07.109729239Z
+        timestamp: 2024-12-10T11:55:36.442782517Z
     resp:
-        status_code: 303
+        status_code: 422
         header:
             Cache-Control: max-age=0, must-revalidate, private
-            Content-Type: text/html; charset=utf-8
-            Date: Tue, 03 Dec 2024 09:59:07 GMT
-            Expires: Tue, 03 Dec 2024 09:59:07 GMT
+            Content-Type: text/html; charset=UTF-8
+            Date: Tue, 10 Dec 2024 11:55:36 GMT
+            Expires: Tue, 10 Dec 2024 11:55:36 GMT
             Host: localhost:8000
-            Location: /book
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 04 Dec 2024 09:59:07 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:55:36 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
-        body: |-
-            <!DOCTYPE html>
-            <html>
-                <head>
-                    <meta charset="UTF-8" />
-                    <meta http-equiv="refresh" content="0;url='/book'" />
-
-                    <title>Redirecting to /book</title>
-                </head>
-                <body>
-                    Redirecting to <a href="/book">/book</a>.
-                </body>
-            </html>
-        status_message: See Other
+        body: "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>New Book</title>\n    <link rel=\"icon\"\n          href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">\n            <link rel=\"stylesheet\" href=\"/build/app.css\">\n    \n\n            <script src=\"/build/runtime.js\" defer></script><script src=\"/build/19.js\" defer></script><script src=\"/build/app.js\" defer></script>\n    </head>\n    <body>\n            <ul>\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/book\">Book</a></li>\n            <li>\n                                    <div class=\"mb-3\">\n                        You are logged in as test@test.com, <a\n                                href=\"/logout\">Logout</a>\n                    </div>\n                            </li>\n                            <li><a href=\"/admin\">Admin</a></li>\n                    </ul>\n        <hr>\n        <h1>Create new Book</h1>\n\n    <form name=\"book\" method=\"post\">\n    <div><label for=\"book_title\" class=\"required\">Title</label><input type=\"text\" id=\"book_title\" name=\"book[title]\" required=\"required\" maxlength=\"255\" value=\"my title\" /></div>\n    <div><label for=\"book_author\" class=\"required\">Author</label><input type=\"text\" id=\"book_author\" name=\"book[author]\" required=\"required\" maxlength=\"255\" value=\"author foo\" /></div>\n    <div><label for=\"book_printLength\" class=\"required\">Print length</label><input type=\"number\" id=\"book_printLength\" name=\"book[printLength]\" required=\"required\" value=\"12\" /></div>\n    <div><label for=\"book_library\" class=\"required\">Library</label><ul><li>The selected choice is invalid.</li></ul><select id=\"book_library\" name=\"book[library]\"><option value=\"1\">The Biggest Library</option><option value=\"2\">The Smallest Library</option></select></div>\n    <button class=\"btn\">Save</button>\n\n<input type=\"hidden\" id=\"book__token\" name=\"book[_token]\" data-controller=\"csrf-protection\" autocomplete=\"off\" value=\"csrf-token\" /></form>\n\n\n    <a href=\"/book\">back to list</a>\n    </body>\n</html>\n"
+        status_message: Unprocessable Entity
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-12-03T09:59:09.422137978Z
+        timestamp: 2024-12-10T11:55:38.670361994Z
     objects: []
     assertions:
         noise:
             header.Date: []
             header.Expires: []
-    created: 1733219949
+    created: 1733831738
 curl: |-
     curl --request POST \
       --url http://localhost:8000/book/new \
-      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Connection: keep-alive' \
+      --header 'Keploy-Test-Id: test-6' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Sec-Gpc: 1' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Sec-Fetch-Site: same-origin' \
       --header 'Content-Type: application/x-www-form-urlencoded' \
-      --header 'Sec-Fetch-Mode: navigate' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=577138b8b81619cca04a6eb51af1605a' \
+      --header 'Referer: http://localhost:8000/book/new' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Upgrade-Insecure-Requests: 1' \
+      --header 'Priority: u=0,i' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Dest: document' \
+      --header 'Keploy-Test-Set-Id: 002-happy path login and create a book' \
+      --header 'Origin: http://localhost:8000' \
       --header 'Dnt: 1' \
       --header 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8' \
-      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Origin: http://localhost:8000' \
-      --header 'Connection: keep-alive' \
-      --header 'Referer: http://localhost:8000/book/new' \
-      --header 'Sec-Fetch-Dest: document' \
-      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=577138b8b81619cca04a6eb51af1605a' \
+      --header 'Sec-Fetch-Mode: navigate' \
       --header 'Sec-Fetch-User: ?1' \
-      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
-      --header 'Sec-Gpc: 1' \
-      --header 'Priority: u=0, i' \
-      --header 'Host: localhost:8000' \
-      --header 'Sec-Fetch-Site: same-origin' \
       --data "book[title]=my title&book[author]=author foo&book[printLength]=12&book[library]=4&book[_token]=csrf-token"
