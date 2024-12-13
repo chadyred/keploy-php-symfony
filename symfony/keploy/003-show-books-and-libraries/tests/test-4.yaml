@@ -25,17 +25,17 @@ spec:
             Sec-Fetch-Site: same-origin
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-12-10T11:58:11.692385491Z
+        timestamp: 2024-12-13T17:38:44.143644552Z
     resp:
         status_code: 200
         header:
             Cache-Control: no-cache, private
             Content-Type: application/ld+json; charset=utf-8
-            Date: Tue, 10 Dec 2024 11:58:11 GMT
+            Date: Fri, 13 Dec 2024 17:38:44 GMT
             Etag: '"c4f37a22ac79b43b"'
             Host: localhost:8000
             Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:58:11 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Sat, 14 Dec 2024 17:38:44 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
             Vary: Accept,Content-Type,Authorization,Origin
             X-Content-Type-Options: nosniff
             X-Frame-Options: deny
@@ -45,27 +45,27 @@ spec:
         status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-12-10T11:58:13.901074111Z
+        timestamp: 2024-12-13T17:38:46.318715389Z
     objects: []
     assertions:
         noise:
             header.Date: []
-    created: 1733831893
+    created: 1734111526
 curl: |
     curl --request GET \
       --url http://localhost:8000/api/contexts/Error \
-      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
-      --header 'Sec-Fetch-Site: same-origin' \
-      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Referer: http://localhost:8000/admin' \
       --header 'Keploy-Test-Id: test-4' \
-      --header 'Host: localhost:8000' \
-      --header 'Sec-Fetch-Dest: empty' \
-      --header 'Connection: keep-alive' \
-      --header 'Accept: application/ld+json' \
-      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
-      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
       --header 'Priority: u=4' \
-      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept: application/ld+json' \
       --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
       --header 'Content-Type: application/ld+json' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Host: localhost:8000' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Connection: keep-alive' \

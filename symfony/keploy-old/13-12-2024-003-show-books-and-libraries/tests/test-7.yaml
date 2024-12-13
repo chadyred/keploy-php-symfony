@@ -24,18 +24,18 @@ spec:
             Sec-Fetch-Site: same-origin
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-12-13T17:38:44.528250657Z
+        timestamp: 2024-12-10T11:58:12.085831449Z
     resp:
         status_code: 200
         header:
             Cache-Control: no-cache, private
-            Content-Location: /api/.well-known/genid/d662dcfce8a3e29ba481.jsonld
+            Content-Location: /api/.well-known/genid/6c19ecc416fc88567ec3.jsonld
             Content-Type: application/ld+json; charset=utf-8
-            Date: Fri, 13 Dec 2024 17:38:44 GMT
+            Date: Tue, 10 Dec 2024 11:58:12 GMT
             Etag: '"8fe45aa20cead8a9"'
             Host: localhost:8000
             Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Sat, 14 Dec 2024 17:38:44 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:58:12 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
             Vary: Accept,Content-Type,Authorization,Origin
             X-Content-Type-Options: nosniff
             X-Frame-Options: deny
@@ -45,26 +45,26 @@ spec:
         status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-12-13T17:38:46.719922435Z
+        timestamp: 2024-12-10T11:58:14.304620942Z
     objects: []
     assertions:
         noise:
             header.Date: []
-    created: 1734111526
+    created: 1733831894
 curl: |
     curl --request GET \
       --url http://localhost:8000/api/docs.jsonld \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
       --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
-      --header 'Host: localhost:8000' \
       --header 'Sec-Fetch-Mode: cors' \
       --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
       --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Accept: */*' \
-      --header 'Keploy-Test-Id: test-7' \
-      --header 'Sec-Fetch-Dest: empty' \
-      --header 'Priority: u=4' \
-      --header 'Referer: http://localhost:8000/admin' \
       --header 'Connection: keep-alive' \
-      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
+      --header 'Keploy-Test-Id: test-7' \
+      --header 'Priority: u=4' \
       --header 'Sec-Fetch-Site: same-origin' \
-      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept: */*' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
+      --header 'Host: localhost:8000' \
+      --header 'Referer: http://localhost:8000/admin' \
