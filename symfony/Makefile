@@ -102,7 +102,7 @@ fixtures:
 	$(DOCKER_EXEC_PHP) bin/console hautelook:fixtures:load --purge-with-truncate -n
 
 ## Record keploy
-keploy-record: .env-compose
+keploy-record: install
 	$(SUB_MAKE) ENV=test start
 	sleep 2  
 	$(SUB_MAKE) init-db 
@@ -110,7 +110,7 @@ keploy-record: .env-compose
 	keploy record
 
 ## Rerecord keploy with TESTS as `make ENV=test TESTS=books-v1 keploy-rerecord`
-keploy-rerecord: .env-compose
+keploy-rerecord: install
 	$(SUB_MAKE) ENV=test start
 	sleep 2  
 	$(SUB_MAKE) init-db 

@@ -52,9 +52,13 @@ services:
       - APP_ENV=${APP_ENV:-test}
     volumes:
       - ./book:/workspace
+    command: "php -S 0.0.0.0:8000 -t public/ public/index.php" # see HEAD of public/index.php, it acts as a router..symfony / php standalone not works....a Keploy runtime could solve that
 #    command: "symfony server:start --listen-ip=0.0.0.0" # unable to fetch the response from the backend: unexpected EOF...keploy proxy is bad ??
 #    command: "php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # No assets...
-    command: "symfony php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # no error, got assets
+#    command: "symfony php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # no error, got assets
+#    command: ["cd", "public", ";","php -S 0.0.0.0:8000 -c docker/php/php.ini"] # No assets...
+#    command: ["./start.sh"]
+#    command: ["ls", '-al']
 
   node:
     user: "${UID}:${GID}"

@@ -1,13 +1,13 @@
 version: api.keploy.io/v1beta1
 kind: Http
-name: test-9
+name: test-6
 spec:
     metadata: {}
     req:
         method: GET
         proto_major: 1
         proto_minor: 1
-        url: http://localhost:8000/api/books
+        url: http://localhost:8000/api
         header:
             Accept: '*/*'
             Accept-Encoding: gzip,deflate,br,zstd
@@ -15,7 +15,7 @@ spec:
             Connection: keep-alive
             Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630
             Host: localhost:8000
-            Keploy-Test-Id: test-9
+            Keploy-Test-Id: test-6
             Keploy-Test-Set-Id: 003-show-books-and-libraries
             Priority: u=4
             Referer: http://localhost:8000/admin
@@ -24,47 +24,47 @@ spec:
             Sec-Fetch-Site: same-origin
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-12-13T17:38:44.811908374Z
+        timestamp: 2024-12-10T11:58:11.947921438Z
     resp:
         status_code: 200
         header:
             Cache-Control: no-cache, private
-            Content-Location: /api/books.jsonld
+            Content-Location: /api/.well-known/genid/8c94ebc7f55443304a79.jsonld
             Content-Type: application/ld+json; charset=utf-8
-            Date: Fri, 13 Dec 2024 17:38:44 GMT
-            Etag: '"68066c5e48395b81"'
+            Date: Tue, 10 Dec 2024 11:58:12 GMT
+            Etag: '"61021f5754f32e85"'
             Host: localhost:8000
             Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Sat, 14 Dec 2024 17:38:44 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:58:12 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
             Vary: Accept,Content-Type,Authorization,Origin
             X-Content-Type-Options: nosniff
             X-Frame-Options: deny
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
-        body: '{"@context":"\/api\/contexts\/Book","@id":"\/api\/books","@type":"Collection","totalItems":1,"member":[{"@id":"\/api\/books\/2","@type":"Book","id":2,"title":"Hello world","author":"Alice et Bob","printLength":12,"library":"\/api\/libraries\/3"}]}'
+        body: '{"@context":"\/api\/contexts\/Entrypoint","@id":"\/api","@type":"Entrypoint","book":"\/api\/books","library":"\/api\/libraries"}'
         status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-12-13T17:38:47.022512125Z
+        timestamp: 2024-12-10T11:58:14.103118259Z
     objects: []
     assertions:
         noise:
             header.Date: []
-    created: 1734111527
+    created: 1733831894
 curl: |
     curl --request GET \
-      --url http://localhost:8000/api/books \
+      --url http://localhost:8000/api \
+      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
+      --header 'Priority: u=4' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Accept: */*' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Sec-Fetch-Site: same-origin' \
       --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
       --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Priority: u=4' \
       --header 'Host: localhost:8000' \
-      --header 'Keploy-Test-Id: test-9' \
-      --header 'Sec-Fetch-Site: same-origin' \
-      --header 'Accept: */*' \
-      --header 'Accept-Encoding: gzip,deflate,br,zstd' \
-      --header 'Connection: keep-alive' \
-      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Keploy-Test-Id: test-6' \
       --header 'Referer: http://localhost:8000/admin' \
-      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
-      --header 'Sec-Fetch-Mode: cors' \

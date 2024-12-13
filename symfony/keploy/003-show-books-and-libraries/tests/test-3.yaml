@@ -25,47 +25,49 @@ spec:
             Sec-Fetch-Site: same-origin
             User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
-        timestamp: 2024-12-10T11:58:11.541234816Z
+        timestamp: 2024-12-13T17:38:43.997104519Z
     resp:
-        status_code: 404
+        status_code: 200
         header:
+            Accept-Patch: application/merge-patch+json
             Cache-Control: no-cache, private
-            Content-Location: /api/errors/404.jsonld
-            Content-Type: application/problem+json; charset=utf-8
-            Date: Tue, 10 Dec 2024 11:58:11 GMT
+            Content-Location: /api/libraries/3.jsonld
+            Content-Type: application/ld+json; charset=utf-8
+            Date: Fri, 13 Dec 2024 17:38:44 GMT
+            Etag: '"bd4c3f9f64bf16bb"'
             Host: localhost:8000
-            Link: <http://www.w3.org/ns/hydra/error>; rel="http://www.w3.org/ns/json-ld#error",<http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
-            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Wed, 11 Dec 2024 11:58:11 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
-            Vary: Accept
+            Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Sat, 14 Dec 2024 17:38:44 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            Vary: Accept,Content-Type,Authorization,Origin
             X-Content-Type-Options: nosniff
             X-Frame-Options: deny
             X-Powered-By: PHP/8.3.11
             X-Robots-Tag: noindex
-        body: '{"@context":"\/api\/contexts\/Error","@id":"\/api\/errors\/404","@type":"Error","title":"An error occurred","detail":"Not Found","status":404,"type":"\/errors\/404","trace":[{"file":"\/workspace\/vendor\/api-platform\/symfony\/Bundle\/SwaggerUi\/SwaggerUiProvider.php","line":50,"function":"provide","class":"ApiPlatform\\State\\Provider\\ReadProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Security\/State\/AccessCheckerProvider.php","line":62,"function":"provide","class":"ApiPlatform\\Symfony\\Bundle\\SwaggerUi\\SwaggerUiProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/state\/Provider\/SecurityParameterProvider.php","line":39,"function":"provide","class":"ApiPlatform\\Symfony\\Security\\State\\AccessCheckerProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/state\/Provider\/DeserializeProvider.php","line":56,"function":"provide","class":"ApiPlatform\\State\\Provider\\SecurityParameterProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Security\/State\/AccessCheckerProvider.php","line":62,"function":"provide","class":"ApiPlatform\\State\\Provider\\DeserializeProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Validator\/State\/ValidateProvider.php","line":32,"function":"provide","class":"ApiPlatform\\Symfony\\Security\\State\\AccessCheckerProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Security\/State\/AccessCheckerProvider.php","line":62,"function":"provide","class":"ApiPlatform\\Symfony\\Validator\\State\\ValidateProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Validator\/State\/ParameterValidatorProvider.php","line":87,"function":"provide","class":"ApiPlatform\\Symfony\\Security\\State\\AccessCheckerProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/state\/Provider\/ParameterProvider.php","line":103,"function":"provide","class":"ApiPlatform\\Symfony\\Validator\\State\\ParameterValidatorProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/state\/Provider\/ContentNegotiationProvider.php","line":51,"function":"provide","class":"ApiPlatform\\State\\Provider\\ParameterProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/api-platform\/symfony\/Controller\/MainController.php","line":83,"function":"provide","class":"ApiPlatform\\State\\Provider\\ContentNegotiationProvider","type":"-\u003E"},{"file":"\/workspace\/vendor\/symfony\/http-kernel\/HttpKernel.php","line":183,"function":"__invoke","class":"ApiPlatform\\Symfony\\Controller\\MainController","type":"-\u003E"},{"file":"\/workspace\/vendor\/symfony\/http-kernel\/HttpKernel.php","line":76,"function":"handleRaw","class":"Symfony\\Component\\HttpKernel\\HttpKernel","type":"-\u003E"},{"file":"\/workspace\/vendor\/symfony\/http-kernel\/Kernel.php","line":182,"function":"handle","class":"Symfony\\Component\\HttpKernel\\HttpKernel","type":"-\u003E"},{"file":"\/workspace\/vendor\/symfony\/runtime\/Runner\/Symfony\/HttpKernelRunner.php","line":35,"function":"handle","class":"Symfony\\Component\\HttpKernel\\Kernel","type":"-\u003E"},{"file":"\/workspace\/vendor\/autoload_runtime.php","line":29,"function":"run","class":"Symfony\\Component\\Runtime\\Runner\\Symfony\\HttpKernelRunner","type":"-\u003E"},{"file":"\/workspace\/public\/index.php","line":5,"function":"require_once"}],"description":"Not Found"}'
-        status_message: Not Found
+        body: '{"@context":"\/api\/contexts\/Library","@id":"\/api\/libraries\/3","@type":"Library","id":3,"books":["\/api\/books\/2"],"name":"The Biggest Library"}'
+        status_message: OK
         proto_major: 0
         proto_minor: 0
-        timestamp: 2024-12-10T11:58:13.699996835Z
+        timestamp: 2024-12-13T17:38:46.218333356Z
     objects: []
     assertions:
         noise:
             header.Date: []
-    created: 1733831893
+    created: 1734111526
 curl: |
     curl --request GET \
       --url http://localhost:8000/api/libraries/3 \
-      --header 'Host: localhost:8000' \
-      --header 'Sec-Fetch-Mode: cors' \
-      --header 'Sec-Fetch-Dest: empty' \
-      --header 'Accept: application/ld+json' \
-      --header 'Priority: u=4' \
-      --header 'Keploy-Test-Id: test-3' \
-      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
-      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
-      --header 'Connection: keep-alive' \
-      --header 'Sec-Fetch-Site: same-origin' \
-      --header 'Referer: http://localhost:8000/admin' \
-      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
-      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
-      --header 'Content-Type: application/ld+json' \
       --header 'Accept-Encoding: gzip,deflate,br,zstd' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Priority: u=4' \
+      --header 'Connection: keep-alive' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630' \
+      --header 'Content-Type: application/ld+json' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Keploy-Test-Set-Id: 003-show-books-and-libraries' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Accept: application/ld+json' \
+      --header 'Keploy-Test-Id: test-3' \
