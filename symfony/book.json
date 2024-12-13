@@ -1,0 +1,951 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Hello API Platform",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://0.0.0.0:8000/",
+      "description": ""
+    }
+  ],
+  "paths": {
+    "/api/books": {
+      "get": {
+        "operationId": "api_books_get_collection",
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book collection",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Book.jsonld"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": [
+                                  "string"
+                                ]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "member"
+                  ]
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book.jsonopenapi"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of Book resources.",
+        "description": "Retrieves the collection of Book resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "operationId": "api_books_post",
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "201": {
+            "description": "Book resource created",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonopenapi"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Creates a Book resource.",
+        "description": "Creates a Book resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new Book resource",
+          "content": {
+            "application/ld+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book.jsonld"
+              }
+            },
+            "text/html": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            },
+            "application/vnd.openapi+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book.jsonopenapi"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    },
+    "/api/books/{id}": {
+      "get": {
+        "operationId": "api_books_id_get",
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book resource",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonopenapi"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Retrieves a Book resource.",
+        "description": "Retrieves a Book resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Book identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "delete": {
+        "operationId": "api_books_id_delete",
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "204": {
+            "description": "Book resource deleted"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Removes the Book resource.",
+        "description": "Removes the Book resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Book identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "patch": {
+        "operationId": "api_books_id_patch",
+        "tags": [
+          "Book"
+        ],
+        "responses": {
+          "200": {
+            "description": "Book resource updated",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book.jsonopenapi"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Updates the Book resource.",
+        "description": "Updates the Book resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Book identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated Book resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Book"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    },
+    "/api/libraries": {
+      "get": {
+        "operationId": "api_libraries_get_collection",
+        "tags": [
+          "Library"
+        ],
+        "responses": {
+          "200": {
+            "description": "Library collection",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "member": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Library.jsonld"
+                      }
+                    },
+                    "totalItems": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "view": {
+                      "type": "object",
+                      "properties": {
+                        "@id": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "@type": {
+                          "type": "string"
+                        },
+                        "first": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "last": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "previous": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        },
+                        "next": {
+                          "type": "string",
+                          "format": "iri-reference"
+                        }
+                      },
+                      "example": {
+                        "@id": "string",
+                        "type": "string",
+                        "first": "string",
+                        "last": "string",
+                        "previous": "string",
+                        "next": "string"
+                      }
+                    },
+                    "search": {
+                      "type": "object",
+                      "properties": {
+                        "@type": {
+                          "type": "string"
+                        },
+                        "template": {
+                          "type": "string"
+                        },
+                        "variableRepresentation": {
+                          "type": "string"
+                        },
+                        "mapping": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "@type": {
+                                "type": "string"
+                              },
+                              "variable": {
+                                "type": "string"
+                              },
+                              "property": {
+                                "type": [
+                                  "string"
+                                ]
+                              },
+                              "required": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "member"
+                  ]
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Library"
+                  }
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Library.jsonopenapi"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Retrieves the collection of Library resources.",
+        "description": "Retrieves the collection of Library resources.",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "The collection page number",
+            "required": false,
+            "deprecated": false,
+            "allowEmptyValue": true,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "style": "form",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "post": {
+        "operationId": "api_libraries_post",
+        "tags": [
+          "Library"
+        ],
+        "responses": {
+          "201": {
+            "description": "Library resource created",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonopenapi"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Creates a Library resource.",
+        "description": "Creates a Library resource.",
+        "parameters": [],
+        "requestBody": {
+          "description": "The new Library resource",
+          "content": {
+            "application/ld+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Library.jsonld"
+              }
+            },
+            "text/html": {
+              "schema": {
+                "$ref": "#/components/schemas/Library"
+              }
+            },
+            "application/vnd.openapi+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Library.jsonopenapi"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    },
+    "/api/libraries/{id}": {
+      "get": {
+        "operationId": "api_libraries_id_get",
+        "tags": [
+          "Library"
+        ],
+        "responses": {
+          "200": {
+            "description": "Library resource",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonopenapi"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Retrieves a Library resource.",
+        "description": "Retrieves a Library resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Library identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "delete": {
+        "operationId": "api_libraries_id_delete",
+        "tags": [
+          "Library"
+        ],
+        "responses": {
+          "204": {
+            "description": "Library resource deleted"
+          },
+          "404": {
+            "description": "Resource not found"
+          }
+        },
+        "summary": "Removes the Library resource.",
+        "description": "Removes the Library resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Library identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "deprecated": false
+      },
+      "patch": {
+        "operationId": "api_libraries_id_patch",
+        "tags": [
+          "Library"
+        ],
+        "responses": {
+          "200": {
+            "description": "Library resource updated",
+            "content": {
+              "application/ld+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonld"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library"
+                }
+              },
+              "application/vnd.openapi+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Library.jsonopenapi"
+                }
+              }
+            },
+            "links": {}
+          },
+          "400": {
+            "description": "Invalid input"
+          },
+          "404": {
+            "description": "Resource not found"
+          },
+          "422": {
+            "description": "Unprocessable entity"
+          }
+        },
+        "summary": "Updates the Library resource.",
+        "description": "Updates the Library resource.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Library identifier",
+            "required": true,
+            "deprecated": false,
+            "allowEmptyValue": false,
+            "schema": {
+              "type": "string"
+            },
+            "style": "simple",
+            "explode": false,
+            "allowReserved": false
+          }
+        ],
+        "requestBody": {
+          "description": "The updated Library resource",
+          "content": {
+            "application/merge-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Library"
+              }
+            }
+          },
+          "required": true
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "description": "The book resource describe a book with its print length",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "printLength": {
+            "type": "integer"
+          },
+          "library": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          }
+        }
+      },
+      "Book.jsonld": {
+        "type": "object",
+        "description": "The book resource describe a book with its print length",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": [
+                      "http://www.w3.org/ns/hydra/core#"
+                    ]
+                  }
+                },
+                "required": [
+                  "@vocab",
+                  "hydra"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "printLength": {
+            "type": "integer"
+          },
+          "library": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          }
+        }
+      },
+      "Book.jsonopenapi": {
+        "type": "object",
+        "description": "The book resource describe a book with its print length",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "title": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string"
+          },
+          "printLength": {
+            "type": "integer"
+          },
+          "library": {
+            "type": "string",
+            "format": "iri-reference",
+            "example": "https://example.com/"
+          }
+        }
+      },
+      "Library": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "iri-reference",
+              "example": "https://example.com/"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Library.jsonld": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "@context": {
+            "readOnly": true,
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "@vocab": {
+                    "type": "string"
+                  },
+                  "hydra": {
+                    "type": "string",
+                    "enum": [
+                      "http://www.w3.org/ns/hydra/core#"
+                    ]
+                  }
+                },
+                "required": [
+                  "@vocab",
+                  "hydra"
+                ],
+                "additionalProperties": true
+              }
+            ]
+          },
+          "@id": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "@type": {
+            "readOnly": true,
+            "type": "string"
+          },
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "iri-reference",
+              "example": "https://example.com/"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      },
+      "Library.jsonopenapi": {
+        "type": "object",
+        "description": "",
+        "deprecated": false,
+        "properties": {
+          "id": {
+            "readOnly": true,
+            "type": "integer"
+          },
+          "books": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "iri-reference",
+              "example": "https://example.com/"
+            }
+          },
+          "name": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {},
+    "parameters": {},
+    "examples": {},
+    "requestBodies": {},
+    "headers": {},
+    "securitySchemes": {}
+  },
+  "security": [],
+  "tags": []
+}

@@ -24,34 +24,29 @@ endif
 ENV ?= dev
 APP_ENV ?= $(ENV)
 
+.PHONY: .env-compose start-bdd start stop restart stop-bdd clean install composer/% keploy-test
+
 ## Add variable useful for docker like GUI and UID
-.PHONY: .env-compose
 .env-compose:
 	@echo "UID=$(USER_ID)" > $@
 	@echo "GID=$(GROUP_ID)" >> $@
 	@echo "APP_ENV=$(APP_ENV)" >> $@
 
-.PHONY: start-bdd
 start-bdd:
 	$(DOCKER_COMPOSE) up -d postgres
 
-.PHONY: start
 start: .env-compose
 	$(DOCKER_COMPOSE) up -d --build
 
-.PHONY: stop
 stop:
 	$(DOCKER_COMPOSE) down
 
-.PHONY: restart
 restart: stop start
 
-.PHONY: stop-bdd
 stop-bdd:
 	$(DOCKER_COMPOSE) down postgres
 
 # Stop and clean docker container (volume and orphans)
-.PHONY: clean
 clean:
 	$(DOCKER_COMPOSE) down --remove-orphans -v
 
@@ -68,7 +63,6 @@ node_modules/.modules.yaml:
 	$(SUB_MAKE) pnpm/'install'
 
 ## Create environment docker file, install PHP and node deps
-.PHONY: install
 install: .env-compose vendor/autoload_runtime.php assets
 
 ## Install vendor (use -B to force command)
@@ -76,8 +70,7 @@ vendor/autoload_runtime.php:
 	$(COMPOSER) install
 
 ## Used to update compose dependencies
-.PHONY: composer/%
-composer/%: 
+composer/%:
 	$(COMPOSER) $*
 
 ######
@@ -118,9 +111,16 @@ keploy-rerecord: install
 	keploy rerecord -t "$(TESTS)"
 
 ## Load keploy record
-.PHONY: keploy-test
 keploy-test: install clean cc .env-compose
 	keploy test
+
+## Load keploy record
+keploy-gen:  install
+	$(SUB_MAKE) ENV=test start
+	sleep 2
+	$(SUB_MAKE) init-db
+	$(SUB_MAKE) fixtures
+	keploy generate-tests -s "book.json" --debug
 
 help:
 	@awk '/^[a-zA-Z \-_0-9(\\u00a9|\\u00ae|[\\u2000-\\u3300]|\\ud83c[\\ud000-\\udfff]|\\ud83d[\\ud000-\\udfff]|\\ud83e[\\ud000-\\udfff])]+:/ { \
