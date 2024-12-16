@@ -1,0 +1,81 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-8
+spec:
+    metadata: {}
+    req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/login
+        header:
+            Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Length: "68"
+            Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+            Host: localhost:8000
+            Origin: http://localhost:8000
+            Priority: u=0
+            Referer: http://localhost:8000/login
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Turbo-Request-Id: 306ec2b1-b5da-421e-8688-886b24540dd2
+        body: _username=test%40test.com&_password=tesettest&_csrf_token=csrf-token
+        timestamp: 2024-12-16T12:30:50.648395533Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:30:51 GMT
+            Expires: Mon, 16 Dec 2024 12:30:51 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/login
+            Set-Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa; path=/; httponly; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/login'" />
+
+                    <title>Redirecting to http://localhost:8000/login</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/login">http://localhost:8000/login</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:30:53.487702969Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1734352253
+curl: |-
+    curl --request POST \
+      --url http://localhost:8000/login \
+      --header 'X-Turbo-Request-Id: 306ec2b1-b5da-421e-8688-886b24540dd2' \
+      --header 'Host: localhost:8000' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Priority: u=0' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Referer: http://localhost:8000/login' \
+      --header 'Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
+      --header 'Origin: http://localhost:8000' \
+      --data "_username=test%40test.com&_password=tesettest&_csrf_token=csrf-token"

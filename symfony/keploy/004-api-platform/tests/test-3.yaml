@@ -1,0 +1,55 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-3
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/build/app.js
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa
+            Host: localhost:8000
+            Referer: http://localhost:8000/admin
+            Sec-Fetch-Dest: script
+            Sec-Fetch-Mode: no-cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-16T12:34:18.096564408Z
+    resp:
+        status_code: 200
+        header:
+            Content-Length: "3618"
+            Content-Type: application/javascript
+            Date: Mon, 16 Dec 2024 12:34:18 GMT
+            Host: localhost:8000
+        body: "(self.webpackChunk=self.webpackChunk||[]).push([[524],{35390:(t,e,r)=>{var n={\"./hello_controller.js\":95256};function o(t){var e=u(t);return r(e)}function u(t){if(!r.o(n,t)){var e=new Error(\"Cannot find module '\"+t+\"'\");throw e.code=\"MODULE_NOT_FOUND\",e}return n[t]}o.keys=function(){return Object.keys(n)},o.resolve=u,t.exports=o,o.id=35390},72946:(t,e,r)=>{var n={\"./ReactAdmin.jsx\":91019};function o(t){var e=u(t);return r(e)}function u(t){if(!r.o(n,t)){var e=new Error(\"Cannot find module '\"+t+\"'\");throw e.code=\"MODULE_NOT_FOUND\",e}return n[t]}o.keys=function(){return Object.keys(n)},o.resolve=u,t.exports=o,o.id=72946},73002:(t,e,r)=>{\"use strict\";r.d(e,{A:()=>u});var n=r(15703),o=r(47080);const u={\"symfony--ux-react--react\":n.A,\"symfony--ux-turbo--turbo-core\":o.A}},95256:(t,e,r)=>{\"use strict\";r.r(e),r.d(e,{default:()=>l});r(56359),r(24907),r(9527),r(89200),r(98756),r(96194),r(83076),r(83376),r(36694),r(11680),r(35948),r(83805),r(36495),r(61664),r(97675),r(98127),r(70613),r(824),r(56389);function n(t){return n=\"function\"==typeof Symbol&&\"symbol\"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&\"function\"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?\"symbol\":typeof t},n(t)}function o(t,e){for(var r=0;r<e.length;r++){var n=e[r];n.enumerable=n.enumerable||!1,n.configurable=!0,\"value\"in n&&(n.writable=!0),Object.defineProperty(t,u(n.key),n)}}function u(t){var e=function(t,e){if(\"object\"!=n(t)||!t)return t;var r=t[Symbol.toPrimitive];if(void 0!==r){var o=r.call(t,e||\"default\");if(\"object\"!=n(o))return o;throw new TypeError(\"@@toPrimitive must return a primitive value.\")}return(\"string\"===e?String:Number)(t)}(t,\"string\");return\"symbol\"==n(e)?e:e+\"\"}function i(t,e,r){return e=f(e),function(t,e){if(e&&(\"object\"==n(e)||\"function\"==typeof e))return e;if(void 0!==e)throw new TypeError(\"Derived constructors may only return object or undefined\");return function(t){if(void 0===t)throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\");return t}(t)}(t,c()?Reflect.construct(e,r||[],f(t).constructor):e.apply(t,r))}function c(){try{var t=!Boolean.prototype.valueOf.call(Reflect.construct(Boolean,[],(function(){})))}catch(t){}return(c=function(){return!!t})()}function f(t){return f=Object.setPrototypeOf?Object.getPrototypeOf.bind():function(t){return t.__proto__||Object.getPrototypeOf(t)},f(t)}function s(t,e){return s=Object.setPrototypeOf?Object.setPrototypeOf.bind():function(t,e){return t.__proto__=e,t},s(t,e)}var l=function(t){function e(){return function(t,e){if(!(t instanceof e))throw new TypeError(\"Cannot call a class as a function\")}(this,e),i(this,e,arguments)}return function(t,e){if(\"function\"!=typeof e&&null!==e)throw new TypeError(\"Super expression must either be null or a function\");t.prototype=Object.create(e&&e.prototype,{constructor:{value:t,writable:!0,configurable:!0}}),Object.defineProperty(t,\"prototype\",{writable:!1}),e&&s(t,e)}(e,t),r=e,(n=[{key:\"connect\",value:function(){this.element.textContent=\"Hello Stimulus! Edit me in assets/controllers/hello_controller.js but maybe\"}}])&&o(r.prototype,n),u&&o(r,u),Object.defineProperty(r,\"prototype\",{writable:!1}),r;var r,n,u}(r(7809).xI)},38587:(t,e,r)=>{\"use strict\";(0,r(54284).E)(r(35390));var n=r(72172);console.log(\"This log comes from assets/app.js - welcome to AssetMapper! \U0001F389\"),(0,n.$)(r(72946))},91019:(t,e,r)=>{\"use strict\";r.r(e),r.d(e,{default:()=>u});var n=r(77429),o=(r(30758),r(86070));const u=function(t){return(0,o.jsx)(n.A,{entrypoint:t.entrypoint})}},65970:()=>{}},t=>{t.O(0,[19],(()=>{return e=38587,t(t.s=e);var e}));t.O()}]);"
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:34:20.124392471Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1734352460
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/build/app.js \
+      --header 'Sec-Fetch-Mode: no-cors' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Sec-Fetch-Dest: script' \
+      --header 'Connection: keep-alive' \
+      --header 'Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Accept: */*' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Host: localhost:8000' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \

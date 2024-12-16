@@ -18,17 +18,13 @@ keploy rerecord -c "node src/app.js" -t "test-set-0"
 
 DEMO :
 
-1. make ENV=test start && sleep 2 && make init-db && make fixtures && make ENV=test keploy-record
+1. `make ENV=test keploy-record`
 2. Open browser in ghost mode
 3. go to "/"
 4. go to "/login" : test@test.com / test
 5. stop record
-6. m ENV=test keploy-test
+6. `make ENV=test keploy-test`
 
 TODO : 
 
-- check slack to know how to replace / assert but ignore in body form as string
-- try to add fields to show the "rerecord" option with the new filed and without create a new test
-- problematic ito the cache / test context because we have a diff...it is specified also for the cache, so we have to
-  use "ESI" to cache only the static block and not the variables to be able to ot create systématically the cache
-- LAUNCH TEST IN A NEW AND CONFIDENTIAL TAB : FIELDS COULD BE PREFILLED BECAUSE OF THE BROWSER, check how to warn that
+- make the tcp://docker:2715 port accessible and not the /var/docker/docker.sock hardcoded > recompile Keploy (make a diff and apply on CI to test)

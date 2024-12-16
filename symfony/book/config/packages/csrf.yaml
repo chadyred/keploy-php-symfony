@@ -8,3 +8,4 @@ framework:
         stateless_token_ids:
             - authenticate
             - book-item
+#            - delete-book-item

@@ -1,0 +1,71 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-18
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/api/libraries?order%5Bid%5D=DESC&page=1&itemsPerPage=25
+        url_params:
+            itemsPerPage: "25"
+            order[id]: DESC
+            page: "1"
+        header:
+            Accept: application/ld+json
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Type: application/ld+json
+            Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa
+            Host: localhost:8000
+            Priority: u=0
+            Referer: http://localhost:8000/admin
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-16T12:35:09.59693188Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Location: /api/libraries.jsonld?order%5Bid%5D=DESC&page=1&itemsPerPage=25
+            Content-Type: application/ld+json; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:35:09 GMT
+            Etag: '"5f7c788ef541d340"'
+            Host: localhost:8000
+            Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+            Vary: Accept,Content-Type,Authorization,Origin
+            X-Content-Type-Options: nosniff
+            X-Frame-Options: deny
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: '{"@context":"\/api\/contexts\/Library","@id":"\/api\/libraries","@type":"Collection","totalItems":2,"member":[{"@id":"\/api\/libraries\/1","@type":"Library","id":1,"books":["\/api\/books\/1"],"name":"The Biggest Library"},{"@id":"\/api\/libraries\/2","@type":"Library","id":2,"books":[],"name":"The Smallest Library"}],"view":{"@id":"\/api\/libraries?itemsPerPage=25\u0026order%5Bid%5D=DESC","@type":"PartialCollectionView"}}'
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:35:11.813237034Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1734352511
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/api/libraries?order%5Bid%5D=DESC&page=1&itemsPerPage=25 \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Priority: u=0' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Content-Type: application/ld+json' \
+      --header 'Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Accept: application/ld+json' \
+      --header 'Sec-Fetch-Dest: empty' \

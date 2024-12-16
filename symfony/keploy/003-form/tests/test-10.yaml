@@ -1,0 +1,83 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-10
+spec:
+    metadata: {}
+    req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/login
+        header:
+            Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Content-Length: "67"
+            Content-Type: application/x-www-form-urlencoded;charset=UTF-8
+            Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa
+            Host: localhost:8000
+            Origin: http://localhost:8000
+            Priority: u=0
+            Referer: http://localhost:8000/login
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Turbo-Request-Id: b64cbb98-09ba-44c2-aecb-168a6a8ecc0c
+        body: _username=test%40test.com&_password=testtest&_csrf_token=csrf-token
+        timestamp: 2024-12-16T12:30:55.484086317Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:30:55 GMT
+            Expires: Mon, 16 Dec 2024 12:30:55 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Tue, 17 Dec 2024 12:30:55 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/'" />
+
+                    <title>Redirecting to http://localhost:8000/</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/">http://localhost:8000/</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:30:58.004825593Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1734352258
+curl: |-
+    curl --request POST \
+      --url http://localhost:8000/login \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Referer: http://localhost:8000/login' \
+      --header 'Connection: keep-alive' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa' \
+      --header 'Origin: http://localhost:8000' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Host: localhost:8000' \
+      --header 'X-Turbo-Request-Id: b64cbb98-09ba-44c2-aecb-168a6a8ecc0c' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Content-Type: application/x-www-form-urlencoded;charset=UTF-8' \
+      --header 'Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Priority: u=0' \
+      --data "_username=test%40test.com&_password=testtest&_csrf_token=csrf-token"

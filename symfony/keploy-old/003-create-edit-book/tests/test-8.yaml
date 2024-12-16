@@ -1,0 +1,62 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-8
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/book
+        header:
+            Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=ba785c16b97a672f5e854a8ebd759c04
+            Host: localhost:8000
+            Priority: u=0
+            Referer: http://localhost:8000/book/new
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Turbo-Request-Id: acdc7928-c9db-4875-a9db-6ee51dc8d035
+        body: ""
+        timestamp: 2024-12-14T18:25:03.498613622Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Sat, 14 Dec 2024 18:25:03 GMT
+            Host: localhost:8000
+            Set-Cookie: X-Auth-Keploy=test@test.com; expires=Sun, 15 Dec 2024 18:25:03 GMT; Max-Age=86400; path=/; domain=localhost; samesite=lax
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Book index</title>\n    <link rel=\"icon\"\n          href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">\n            <link rel=\"stylesheet\" href=\"/build/app.css\">\n    \n\n            <script src=\"/build/runtime.js\" defer></script><script src=\"/build/19.js\" defer></script><script src=\"/build/app.js\" defer></script>\n    </head>\n    <body>\n            <ul>\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/book\">Book</a></li>\n            <li>\n                                    <div class=\"mb-3\">\n                        You are logged in as test@test.com, <a\n                                href=\"/logout\">Logout</a>\n                    </div>\n                            </li>\n                            <li><a href=\"/admin\">Admin</a></li>\n                    </ul>\n        <hr>\n        <h1>Book index</h1>\n\n    <table class=\"table\">\n        <thead>\n            <tr>\n                <th>Id</th>\n                <th>Title</th>\n                <th>Author</th>\n                <th>printLength</th>\n                <th>Library</th>\n                <th>actions</th>\n            </tr>\n        </thead>\n        <tbody>\n                    <tr>\n                <td>1</td>\n                <td>Hello world</td>\n                <td>Alice et Bob</td>\n                <td>12</td>\n                <td>The Biggest Library</td>\n                <td>\n                                        <a href=\"/book/1\">show</a>\n                    <a href=\"/book/1/edit\">edit</a>\n                                    </td>\n            </tr>\n                    <tr>\n                <td>2</td>\n                <td>test</td>\n                <td>test</td>\n                <td>12</td>\n                <td>The Smallest Library</td>\n                <td>\n                                        <a href=\"/book/2\">show</a>\n                    <a href=\"/book/2/edit\">edit</a>\n                                    </td>\n            </tr>\n                </tbody>\n    </table>\n\n    <a href=\"/book/new\">Create new</a>    </body>\n</html>\n"
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-14T18:25:05.733175018Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1734200705
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/book \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Referer: http://localhost:8000/book/new' \
+      --header 'X-Turbo-Request-Id: acdc7928-c9db-4875-a9db-6ee51dc8d035' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Priority: u=0' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Accept: text/vnd.turbo-stream.html, text/html, application/xhtml+xml' \
+      --header 'Host: localhost:8000' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=ba785c16b97a672f5e854a8ebd759c04' \

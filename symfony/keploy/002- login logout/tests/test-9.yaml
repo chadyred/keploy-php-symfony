@@ -1,0 +1,83 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-9
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/logout
+        header:
+            Accept: text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=ad50928da804f5f93aa8e275cce59177
+            Dnt: "1"
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            Sec-Gpc: "1"
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Sec-Purpose: prefetch
+            X-Turbo-Request-Id: d64493d5-67bd-4a22-a554-1b89536c71e4
+        body: ""
+        timestamp: 2024-12-16T12:26:41.270668929Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:26:41 GMT
+            Expires: Mon, 16 Dec 2024 12:26:41 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/
+            Set-Cookie: X-Auth-Keploy=deleted; expires=Sun, 17 Dec 2023 12:26:40 GMT; Max-Age=0; path=/; httponly
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/'" />
+
+                    <title>Redirecting to http://localhost:8000/</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/">http://localhost:8000/</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:26:43.410915384Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1734352003
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/logout \
+      --header 'Referer: http://localhost:8000/' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'X-Turbo-Request-Id: d64493d5-67bd-4a22-a554-1b89536c71e4' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Dnt: 1' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'X-Sec-Purpose: prefetch' \
+      --header 'Host: localhost:8000' \
+      --header 'Sec-Gpc: 1' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Priority: u=4' \
+      --header 'Accept: text/html, application/xhtml+xml' \
+      --header 'Connection: keep-alive' \
+      --header 'Cookie: X-Auth-Keploy=test@test.com; MOCKSESSID=ad50928da804f5f93aa8e275cce59177' \

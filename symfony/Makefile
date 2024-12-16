@@ -102,17 +102,21 @@ keploy-record: install
 	$(SUB_MAKE) fixtures
 	keploy record
 
-## Rerecord keploy with TESTS as `make ENV=test TESTS=books-v1 keploy-rerecord`
+## Rerecord keploy with TEST as `make ENV=test TEST=books-v1 keploy-rerecord`
 keploy-rerecord: install
 	$(SUB_MAKE) ENV=test start
 	sleep 2  
 	$(SUB_MAKE) init-db 
 	$(SUB_MAKE) fixtures
-	keploy rerecord -t "$(TESTS)"
+	keploy rerecord -t "$(TEST)"
 
-## Load keploy record
+## Play keploy tests or one test as `make TEST=001-test keploy-test`
 keploy-test: install clean cc .env-compose
+ifneq ("$(TEST)","")
+	keploy test -t $(TEST)
+else
 	keploy test
+endif
 
 ## Load keploy record
 keploy-gen:  install

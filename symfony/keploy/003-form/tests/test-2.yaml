@@ -1,0 +1,55 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-2
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/build/app.css
+        header:
+            Accept: text/css,*/*;q=0.1
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Host: localhost:8000
+            Priority: u=2
+            Referer: http://localhost:8000/
+            Sec-Fetch-Dest: style
+            Sec-Fetch-Mode: no-cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-16T12:30:39.214150829Z
+    resp:
+        status_code: 200
+        header:
+            Content-Length: "30"
+            Content-Type: text/css; charset=UTF-8
+            Date: Mon, 16 Dec 2024 12:30:39 GMT
+            Host: localhost:8000
+        body: body{background-color:skyblue}
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:30:41.317144696Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1734352241
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/build/app.css \
+      --header 'Accept: text/css,*/*;q=0.1' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Sec-Fetch-Dest: style' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Host: localhost:8000' \
+      --header 'Referer: http://localhost:8000/' \
+      --header 'Priority: u=2' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Mode: no-cors' \

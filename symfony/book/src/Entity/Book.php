@@ -73,6 +73,11 @@ class Book
     {
         return $this->library;
     }
+    
+//    public function getLibraryId(): ?int
+//    {
+//        return $this->library->getId();
+//    }
 
     public function setLibrary(?Library $library): static
     {

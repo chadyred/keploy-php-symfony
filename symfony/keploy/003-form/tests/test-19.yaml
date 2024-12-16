@@ -1,0 +1,79 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-19
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/logout
+        header:
+            Accept: text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa; X-Auth-Keploy=test@test.com
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/book
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Sec-Purpose: prefetch
+            X-Turbo-Request-Id: d2594a36-a44b-4e42-93c3-05823a41536c
+        body: ""
+        timestamp: 2024-12-16T12:31:16.457630651Z
+    resp:
+        status_code: 302
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:31:16 GMT
+            Expires: Mon, 16 Dec 2024 12:31:16 GMT
+            Host: localhost:8000
+            Location: http://localhost:8000/
+            Set-Cookie: X-Auth-Keploy=deleted; expires=Sun, 17 Dec 2023 12:31:15 GMT; Max-Age=0; path=/; httponly
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: |-
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <meta charset="UTF-8" />
+                    <meta http-equiv="refresh" content="0;url='http://localhost:8000/'" />
+
+                    <title>Redirecting to http://localhost:8000/</title>
+                </head>
+                <body>
+                    Redirecting to <a href="http://localhost:8000/">http://localhost:8000/</a>.
+                </body>
+            </html>
+        status_message: Found
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:31:18.69697306Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1734352278
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/logout \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Referer: http://localhost:8000/book' \
+      --header 'Priority: u=4' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'X-Turbo-Request-Id: d2594a36-a44b-4e42-93c3-05823a41536c' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa; X-Auth-Keploy=test@test.com' \
+      --header 'X-Sec-Purpose: prefetch' \
+      --header 'Accept: text/html, application/xhtml+xml' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Connection: keep-alive' \
+      --header 'Host: localhost:8000' \
