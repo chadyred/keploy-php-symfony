@@ -16,16 +16,6 @@ spec:
             Accept: application/ld+json
             Accept-Encoding: gzip, deflate, br, zstd
             Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
-            Connection: keep-alive
-            Content-Type: application/ld+json
-            Cookie: X-Auth-Keploy=test@test.com; main_deauth_profile_token=f06630
-            Host: localhost:8000
-            Priority: u=4
-            Referer: http://localhost:8000/admin
-            Sec-Fetch-Dest: empty
-            Sec-Fetch-Mode: cors
-            Sec-Fetch-Site: same-origin
-            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
         body: ""
         timestamp: 2024-12-10T10:57:41.022131334Z
     resp:

@@ -1,0 +1,65 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-9
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/api/books
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/admin
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+        body: ""
+        timestamp: 2024-12-16T12:34:19.218517229Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: no-cache, private
+            Content-Location: /api/books.jsonld
+            Content-Type: application/ld+json; charset=utf-8
+            Date: Mon, 16 Dec 2024 12:34:19 GMT
+            Etag: '"84edffd08fd6bd8c"'
+            Host: localhost:8000
+            Link: <http://localhost:8000/api/docs.jsonld>; rel="http://www.w3.org/ns/hydra/core#apiDocumentation"
+            Vary: Accept,Content-Type,Authorization,Origin
+            X-Content-Type-Options: nosniff
+            X-Frame-Options: deny
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: '{"@context":"\/api\/contexts\/Book","@id":"\/api\/books","@type":"Collection","totalItems":1,"member":[{"@id":"\/api\/books\/1","@type":"Book","id":1,"title":"Hello world","author":"Alice et Bob","printLength":12,"library":"\/api\/libraries\/1"}]}'
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:34:21.437615477Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+    created: 1734352461
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/api/books \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Priority: u=4' \
+      --header 'Host: localhost:8000' \
+      --header 'Cookie: MOCKSESSID=22e371bfcc8b46864a3a241e74e7bbfa' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Connection: keep-alive' \
+      --header 'Accept: */*' \
+      --header 'Referer: http://localhost:8000/admin' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \

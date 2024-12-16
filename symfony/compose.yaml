@@ -15,30 +15,6 @@ services:
     ports:
       - '5432:5432'
 
-#  php:
-#    container_name: php-book-sf
-#    build: docker/php
-#    depends_on:
-#      postgres:
-#        condition: service_healthy # keploy seems to not super this kind of thing
-#    depends_on:
-#      - postgres
-#    working_dir: "/workspace"
-#    volumes:
-#      - ./book:/workspace
-
-#  nginx: # keploy don't want to listen to load balancer
-#    image: nginx:alpine3.20-slim@sha256:087f90d16ce1004cf11671e229b62cc36dca1b837870aa357983954a46034d33
-#    volumes:
-#      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-#      - ./book:/workspace
-#    working_dir: /workspace
-#    depends_on:
-#      - php
-#    ports:
-#      - "${NGINX_PORT:-8080}:80"
-#    container_name: nginx-book-sf
-    
   php-s:
     container_name: php-s-book-store
     build: docker/php
@@ -53,12 +29,6 @@ services:
     volumes:
       - ./book:/workspace
     command: "php -S 0.0.0.0:8000 -t public/ public/index.php" # see HEAD of public/index.php, it acts as a router..symfony / php standalone not works....a Keploy runtime could solve that
-#    command: "symfony server:start --listen-ip=0.0.0.0" # unable to fetch the response from the backend: unexpected EOF...keploy proxy is bad ??
-#    command: "php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # No assets...
-#    command: "symfony php -S 0.0.0.0:8000 public/index.php -c docker/php/php.ini" # no error, got assets
-#    command: ["cd", "public", ";","php -S 0.0.0.0:8000 -c docker/php/php.ini"] # No assets...
-#    command: ["./start.sh"]
-#    command: ["ls", '-al']
 
   node:
     user: "${UID}:${GID}"

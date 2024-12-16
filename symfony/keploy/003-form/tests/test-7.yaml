@@ -1,0 +1,63 @@
+version: api.keploy.io/v1beta1
+kind: Http
+name: test-7
+spec:
+    metadata: {}
+    req:
+        method: GET
+        proto_major: 1
+        proto_minor: 1
+        url: http://localhost:8000/login
+        header:
+            Accept: text/html, application/xhtml+xml
+            Accept-Encoding: gzip, deflate, br, zstd
+            Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3
+            Connection: keep-alive
+            Host: localhost:8000
+            Priority: u=4
+            Referer: http://localhost:8000/
+            Sec-Fetch-Dest: empty
+            Sec-Fetch-Mode: cors
+            Sec-Fetch-Site: same-origin
+            User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0
+            X-Sec-Purpose: prefetch
+            X-Turbo-Request-Id: b405c55a-b953-4423-bddc-187bb97bd619
+        body: ""
+        timestamp: 2024-12-16T12:30:41.030150134Z
+    resp:
+        status_code: 200
+        header:
+            Cache-Control: max-age=0, must-revalidate, private
+            Content-Type: text/html; charset=UTF-8
+            Date: Mon, 16 Dec 2024 12:30:41 GMT
+            Expires: Mon, 16 Dec 2024 12:30:41 GMT
+            Host: localhost:8000
+            X-Powered-By: PHP/8.3.11
+            X-Robots-Tag: noindex
+        body: "<!DOCTYPE html>\n<html>\n<head>\n    <meta charset=\"UTF-8\">\n    <title>Log in!</title>\n    <link rel=\"icon\"\n          href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>\">\n            <link rel=\"stylesheet\" href=\"/build/app.css\">\n    \n\n            <script src=\"/build/runtime.js\" defer></script><script src=\"/build/19.js\" defer></script><script src=\"/build/app.js\" defer></script>\n    </head>\n    <body>\n            <ul>\n            <li><a href=\"/\">Home</a></li>\n            <li><a href=\"/book\">Book</a></li>\n            <li>\n                                    <a href=\"/login\">Login</a>\n                            </li>\n                    </ul>\n        <hr>\n        <form method=\"post\">\n        \n        \n        <h1 class=\"h3 mb-3 font-weight-normal\">Please sign in</h1>\n        <label for=\"username\">Email</label>\n        <input type=\"email\" value=\"\" name=\"_username\" id=\"username\" class=\"form-control\" autocomplete=\"email\" required autofocus>\n        <label for=\"password\">Password</label>\n        <input type=\"password\" name=\"_password\" id=\"password\" class=\"form-control\" autocomplete=\"current-password\" required>\n\n        <input type=\"hidden\" name=\"_csrf_token\" value=\"csrf-token\">\n\n        \n        <button class=\"btn btn-lg btn-primary\" type=\"submit\">\n            Sign in\n        </button>\n    </form>\n    </body>\n</html>\n"
+        status_message: OK
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2024-12-16T12:30:43.251445978Z
+    objects: []
+    assertions:
+        noise:
+            header.Date: []
+            header.Expires: []
+    created: 1734352243
+curl: |
+    curl --request GET \
+      --url http://localhost:8000/login \
+      --header 'Priority: u=4' \
+      --header 'Connection: keep-alive' \
+      --header 'Sec-Fetch-Dest: empty' \
+      --header 'X-Sec-Purpose: prefetch' \
+      --header 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0' \
+      --header 'X-Turbo-Request-Id: b405c55a-b953-4423-bddc-187bb97bd619' \
+      --header 'Sec-Fetch-Site: same-origin' \
+      --header 'Accept: text/html, application/xhtml+xml' \
+      --header 'Accept-Encoding: gzip, deflate, br, zstd' \
+      --header 'Accept-Language: fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3' \
+      --header 'Sec-Fetch-Mode: cors' \
+      --header 'Referer: http://localhost:8000/' \
+      --header 'Host: localhost:8000' \

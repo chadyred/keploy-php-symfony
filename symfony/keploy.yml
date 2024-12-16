@@ -21,14 +21,11 @@ test:
             header: {
               # To ignore the entire field, pass an empty array
                 "Set-Cookie": [],
+#                "Etag": [],
+                #"Content-Location": [ ] # Ignore the /api/.well-known/genid/c9d20e4534881e0b276f.jsonld
             }
         }
         test-sets: {
-            003-show-books-and-libraries: {
-                  header: {
-                      "Content-Location": [ ] # Ignore the /api/.well-known/genid/c9d20e4534881e0b276f.jsonld
-                  }
-            }
         }
     delay: 10
     host: ""

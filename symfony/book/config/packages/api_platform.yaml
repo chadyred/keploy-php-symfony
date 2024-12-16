@@ -5,6 +5,7 @@ api_platform:
         jsonld: [ 'application/ld+json' ]
         html: [ 'text/html' ]
         jsonopenapi: [ 'application/vnd.openapi+json' ]
+        json: [ 'application/json' ]
     defaults:
         stateless: true
         cache_headers:
