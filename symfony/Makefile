@@ -26,21 +26,30 @@ APP_ENV ?= $(ENV)
 
 .PHONY: .env-compose start-bdd start stop restart stop-bdd clean install composer/% keploy-test
 
+
 ## Add variable useful for docker like GUI and UID
 .env-compose:
 	@echo "UID=$(USER_ID)" > $@
 	@echo "GID=$(GROUP_ID)" >> $@
 	@echo "APP_ENV=$(APP_ENV)" >> $@
 
+
+######
+Workflow command:
+
+## Start the database with docker up in demonized mode
 start-bdd:
 	$(DOCKER_COMPOSE) up -d postgres
 
+## Start the project with docker and build container
 start: .env-compose
 	$(DOCKER_COMPOSE) up -d --build
 
+## Stop the project started with docker
 stop:
 	$(DOCKER_COMPOSE) down
 
+## Stop and start the project
 restart: stop start
 
 stop-bdd:
