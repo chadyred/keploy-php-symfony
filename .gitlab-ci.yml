@@ -11,7 +11,7 @@ stages:
 
 keploy-test-job: # This job runs in the test stage.
 #  image: ${DOCKER_CLI_IMAGE}
-  image: hub.skull.ovh/core-docker/builder:alpine-3.8-docker-26 # CLI
+  image: ${DOCKER_CLI_IMAGE} # CLI
   stage: 📏 tests
   cache:
     key:
@@ -21,8 +21,8 @@ keploy-test-job: # This job runs in the test stage.
       - vendor
       - public
       - node_modules
-#  services:
-#    - ${DOCKER_DIND_IMAGE}
+  services:
+    - ${DOCKER_DIND_IMAGE}
   before_script:
     - apk add --update --no-cache sudo curl make
     - curl --silent --location "https://github.com/keploy/keploy/releases/download/v2.3.0-beta38/keploy_linux_amd64.tar.gz" | tar xz --overwrite -C /tmp
@@ -31,7 +31,6 @@ keploy-test-job: # This job runs in the test stage.
   script:
     - cd symfony/
     - docker ps -q --filter "name=keploy-v2" | grep -q . && docker stop keploy-v2 && docker rm -fv keploy-v2
-#    - /bin/sh -c "export DOCKER_HOST=tcp://docker:2375 && docker container run --name keploy-v2 -e INSTALLATION_ID='' -e BINARY_TO_DOCKER=true -p 16789:16789 --privileged --pid=host  -v /builds/florian.cellier7/keploy-php/symfony:/builds/florian.cellier7/keploy-php/symfony -w /builds/florian.cellier7/keploy-php/symfony -v /sys/fs/cgroup:/sys/fs/cgroup -v /sys/kernel/debug:/sys/kernel/debug -v /sys/fs/bpf:/sys/fs/bpf -v /root/.keploy-config:/root/.keploy-config -v /root/.keploy:/root/.keploy --rm ghcr.io/keploy/keploy:v2.3.0-beta38 test --debug"
     - make ENV=test NO_TTY=true keploy-test
   tags:
     - dockerbuilder # DIND with /var/lig/docker.sock shared
