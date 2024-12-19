@@ -32,5 +32,3 @@ keploy-test-job: # This job runs in the test stage.
     - cd symfony/
     - docker ps -q --filter "name=keploy-v2" | grep -q . && docker stop keploy-v2 && docker rm -fv keploy-v2
     - make ENV=test NO_TTY=true keploy-test
-  tags:
-    - dockerbuilder # DIND with /var/lig/docker.sock shared

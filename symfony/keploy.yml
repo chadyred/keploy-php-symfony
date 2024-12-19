@@ -1,7 +1,7 @@
 path: ""
 appId: 0
 appName: book-store
-command: docker compose --env-file .env-compose up
+command: docker compose --env-file .env-compose up --build
 templatize:
     testSets: []
 port: 0
