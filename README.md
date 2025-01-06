@@ -2,7 +2,7 @@
 
 > [NOTE]
 > This is an experimental repository (aka proof of concept), use it with no limit !
-> A presntation is available here : [Demo](https://slides.com/floriancellier/keploy-php)
+> A presentation is available here : [Demo](https://slides.com/floriancellier/keploy-php)
 
 ### Project requirements
 
