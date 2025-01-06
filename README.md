@@ -1,8 +1,39 @@
-# Keploy with Symfony
+# KEPLOY with PHP and Symfony
 
-The topics is : `BOOKS and LIBRARY`
+> [NOTE]
+> This is an experimental repository (aka proof of concept), use it with no limit !
 
-We have to use Symfony "as a binary", and the most simple way is to use the embedded server.
+### Project requirements
+
+- [Docker Engine](https://docs.docker.com/installation/)
+- Make
+- [keploy](https://keploy.io/docs/server/installation/) : local installation needed
+
+## Stack
+
+![stack.png](doc/resources/images/stack.png)
+
+## `BOOKS and LIBRARY` topics
+
+The project tree simplify to have a whole picture :
+
+```shell
+── doc
+  └── resources
+├── example-book.json // -- extract of API to test with `keploy enterprise` version
+├── README.md // -- this file
+└── symfony // -- main project folder
+    ├── book // -- the application itself project folder
+    ├── compose.yaml // -- the docker services description
+    ├── docker  // -- the docker services to build
+    ├── keploy // -- generated mocks and tests
+    ├── keploy.yml // -- keploy configuration
+    └── Makefile // -- commands to interact with the project
+```
+
+We have to use Symfony "as a binary", with the PHP integrated server.
+
+Go to `symfony` directory and do :
 
 1. `make ENV=test start`
 2. `make init-db && make fixtures`
