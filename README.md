@@ -2,6 +2,7 @@
 
 > [NOTE]
 > This is an experimental repository (aka proof of concept), use it with no limit !
+> A presntation is available here : [Demo](https://slides.com/floriancellier/keploy-php)
 
 ### Project requirements
 
@@ -17,10 +18,10 @@
 
 The project tree simplify to have a whole picture :
 
-```shell
-── doc
-  └── resources
-├── example-book.json // -- extract of API to test with `keploy enterprise` version
+```txt
+└─ doc
+   └── resources
+├── example-book.json // -- extract of API doc from project to test with `keploy enterprise` version
 ├── README.md // -- this file
 └── symfony // -- main project folder
     ├── book // -- the application itself project folder
